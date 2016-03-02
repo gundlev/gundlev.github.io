@@ -1,0 +1,7 @@
+main.index
+  h1.headline Lindekaer
+  p.subtitle Copenhagen based developer
+  select.articles
+    option Pick an article
+    for article in articles
+      option(value="#{article.id}") #{article.title}
