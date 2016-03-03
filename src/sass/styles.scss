@@ -74,6 +74,10 @@ body {
   }
 }
 
+code {
+  font-size: 90%;
+}
+
 /*
 -----------------------------------------------------------------------------------
 |
@@ -119,7 +123,7 @@ main.index {
 
 .article h1 { 
   font-size: 3em; 
-  margin-top: 1.2em;
+  margin-top: 1em;
 }
 
 .article h2 { 
@@ -128,7 +132,7 @@ main.index {
 }
 
 .article p {
-  margin-top: 0.5em;
+  margin-top: 1em;
   line-height: 1.45em;
 }
 
@@ -146,5 +150,16 @@ main.index {
   margin-top: 0.5em;
   font-size: 0.8em;
   font-style: italic;
+}
+
+.article pre {
+  margin-top: 1.1em !important;
+}
+
+.article p code {
+  padding: 2px 4px;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
 }
 

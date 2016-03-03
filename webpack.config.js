@@ -21,6 +21,10 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!autoprefixer-loader!sass-loader'
       },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
       { 
         test: /\.ttf$/, 
         loader: 'url-loader?limit=100000' 

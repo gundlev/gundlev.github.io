@@ -48,6 +48,8 @@
 
 	// Require the SASS file, compile it to CSS and insert it on the page
 	__webpack_require__(1);
+	__webpack_require__(19);
+	__webpack_require__(14);
 
 	// Store a reference to the Jade template function
 	var template = __webpack_require__(6);
@@ -58,15 +60,8 @@
 
 	articles.push({
 	  id: 1,
-	  date: '2016-03-01',
-	  title: 'Test article',
-	  content: __webpack_require__(10)
-	});
-
-	articles.push({
-	  id: 2,
 	  date: '2016-03-03',
-	  title: 'Work',
+	  title: 'Updating nested properties dynamically in MongoDB',
 	  content: __webpack_require__(11)
 	});
 
@@ -101,6 +96,36 @@
 	    content: article.content
 	  });
 	  document.querySelector('body').appendChild(articlePlaceholder);
+
+	  // Set code hightlighting
+	  var codeNodes = getElements('code[class^="lang-"]');
+	  var _iteratorNormalCompletion = true;
+	  var _didIteratorError = false;
+	  var _iteratorError = undefined;
+
+	  try {
+	    for (var _iterator = codeNodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	      var node = _step.value;
+
+	      node.className = node.className.replace('lang', 'language');
+	      node.parentNode.classList.add(node.className);
+	    }
+	  } catch (err) {
+	    _didIteratorError = true;
+	    _iteratorError = err;
+	  } finally {
+	    try {
+	      if (!_iteratorNormalCompletion && _iterator.return) {
+	        _iterator.return();
+	      }
+	    } finally {
+	      if (_didIteratorError) {
+	        throw _iteratorError;
+	      }
+	    }
+	  }
+
+	  Prism.highlightAll();
 
 	  // Handle animation
 	  setTimeout(function () {
@@ -172,7 +197,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 3.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px;\n  font-size: 1em; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 3em;\n  margin-top: 1.2em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 0.5em;\n  line-height: 1.45em; }\n\n.article .meta {\n  padding: 1em 0em 1em 0em; }\n\n.article .meta__author {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article .meta__date {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\ncode {\n  font-size: 90%; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 3.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px;\n  font-size: 1em; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 3em;\n  margin-top: 1em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 1em;\n  line-height: 1.45em; }\n\n.article .meta {\n  padding: 1em 0em 1em 0em; }\n\n.article .meta__author {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article .meta__date {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article pre {\n  margin-top: 1.1em !important; }\n\n.article p code {\n  padding: 2px 4px;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px; }\n", ""]);
 
 	// exports
 
@@ -795,16 +820,771 @@
 	}
 
 /***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	module.exports = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores dolor expedita voluptatem atque suscipit nisi distinctio eos, incidunt labore a magni earum veniam maxime, ipsa mollitia quas enim delectus, porro.</p>\n";
-
-/***/ },
+/* 10 */,
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<h2 id=\"doom\">Doom</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n";
+	module.exports = "<p>Developing my REST application (running on Express), I experienced a problem when trying to update nested object properties. Specifically, I was passing the <code>req.body</code> directly to the MongoDB <code>$set</code> operator. This did however lead to problems, as I accidently removed properties.</p>\n<pre><code class=\"lang-javascript\">// 1. The user object in MongoDB (before the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    street: &#39;High Street&#39;,\n    streetNumber: 109,\n    zipCode: &#39;2020-90&#39;\n  }\n}\n\n// 2. The request body (sent as a PUT request to the Express app)\nvar body = {\n  address: {\n    streetNumber: 200\n  }\n}\n\n// 3. Updating the user\ndb.collections(&#39;users&#39;).update({ $set: req.body })\n\n// 4. The user object in MongoDB (after the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    streetNumber: 200,\n  }\n}\n</code></pre>\n<p>The set operation of the <code>address</code> property removed all other properties nested under <code>address</code>. In order to specifically update a single property in MongoDB, one has to use the string dot-notation.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: { &#39;address.streetNumber&#39;: 200 } })\n</code></pre>\n<p>I therefore created a function to recursively loop through a nested JSON structure and construct a corresponding object in string dot-notation ready for a MongoDB update.</p>\n<pre><code class=\"lang-javascript\">function constructUpdateQuery(obj) {\n  var res = {};\n  (function iterate(obj, parent) {\n    for (var prop in obj) {\n      if (obj.hasOwnProperty(prop)) {\n        if (typeof obj[prop] === &#39;string&#39; \n          || typeof obj[prop] === &#39;number&#39; \n          || typeof obj[prop] === &#39;boolean&#39; \n          || Object.prototype.toString.call(obj[prop]) === &#39;[object Array]&#39; ) {\n          if (parent) res[parent + &#39;.&#39; + prop] = obj[prop];\n          else res[prop] = obj[prop];\n        } else {\n          if (parent) iterate(obj[prop], parent + &#39;.&#39; + prop);\n          else iterate(obj[prop], prop);\n        }\n      }\n    }\n  })(obj)\n  return res;\n}\n</code></pre>\n<p>It is now easy as cake to update a document by passing the <code>req.body</code>.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: constructUpdateQuery(req.body) })\n</code></pre>\n";
+
+/***/ },
+/* 12 */,
+/* 13 */,
+/* 14 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
+
+	/* **********************************************
+	     Begin prism-core.js
+	********************************************** */
+
+	var _self = typeof window !== 'undefined' ? window // if in browser
+	: typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope ? self // if in worker
+	: {} // if in node js
+	;
+
+	/**
+	 * Prism: Lightweight, robust, elegant syntax highlighting
+	 * MIT license http://www.opensource.org/licenses/mit-license.php/
+	 * @author Lea Verou http://lea.verou.me
+	 */
+
+	var Prism = function () {
+
+		// Private helper vars
+		var lang = /\blang(?:uage)?-(\w+)\b/i;
+		var uniqueId = 0;
+
+		var _ = _self.Prism = {
+			util: {
+				encode: function encode(tokens) {
+					if (tokens instanceof Token) {
+						return new Token(tokens.type, _.util.encode(tokens.content), tokens.alias);
+					} else if (_.util.type(tokens) === 'Array') {
+						return tokens.map(_.util.encode);
+					} else {
+						return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+					}
+				},
+
+				type: function type(o) {
+					return Object.prototype.toString.call(o).match(/\[object (\w+)\]/)[1];
+				},
+
+				objId: function objId(obj) {
+					if (!obj['__id']) {
+						Object.defineProperty(obj, '__id', { value: ++uniqueId });
+					}
+					return obj['__id'];
+				},
+
+				// Deep clone a language definition (e.g. to extend it)
+				clone: function clone(o) {
+					var type = _.util.type(o);
+
+					switch (type) {
+						case 'Object':
+							var clone = {};
+
+							for (var key in o) {
+								if (o.hasOwnProperty(key)) {
+									clone[key] = _.util.clone(o[key]);
+								}
+							}
+
+							return clone;
+
+						case 'Array':
+							// Check for existence for IE8
+							return o.map && o.map(function (v) {
+								return _.util.clone(v);
+							});
+					}
+
+					return o;
+				}
+			},
+
+			languages: {
+				extend: function extend(id, redef) {
+					var lang = _.util.clone(_.languages[id]);
+
+					for (var key in redef) {
+						lang[key] = redef[key];
+					}
+
+					return lang;
+				},
+
+				/**
+	    * Insert a token before another token in a language literal
+	    * As this needs to recreate the object (we cannot actually insert before keys in object literals),
+	    * we cannot just provide an object, we need anobject and a key.
+	    * @param inside The key (or language id) of the parent
+	    * @param before The key to insert before. If not provided, the function appends instead.
+	    * @param insert Object with the key/value pairs to insert
+	    * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
+	    */
+				insertBefore: function insertBefore(inside, before, insert, root) {
+					root = root || _.languages;
+					var grammar = root[inside];
+
+					if (arguments.length == 2) {
+						insert = arguments[1];
+
+						for (var newToken in insert) {
+							if (insert.hasOwnProperty(newToken)) {
+								grammar[newToken] = insert[newToken];
+							}
+						}
+
+						return grammar;
+					}
+
+					var ret = {};
+
+					for (var token in grammar) {
+
+						if (grammar.hasOwnProperty(token)) {
+
+							if (token == before) {
+
+								for (var newToken in insert) {
+
+									if (insert.hasOwnProperty(newToken)) {
+										ret[newToken] = insert[newToken];
+									}
+								}
+							}
+
+							ret[token] = grammar[token];
+						}
+					}
+
+					// Update references in other language definitions
+					_.languages.DFS(_.languages, function (key, value) {
+						if (value === root[inside] && key != inside) {
+							this[key] = ret;
+						}
+					});
+
+					return root[inside] = ret;
+				},
+
+				// Traverse a language definition with Depth First Search
+				DFS: function DFS(o, callback, type, visited) {
+					visited = visited || {};
+					for (var i in o) {
+						if (o.hasOwnProperty(i)) {
+							callback.call(o, i, o[i], type || i);
+
+							if (_.util.type(o[i]) === 'Object' && !visited[_.util.objId(o[i])]) {
+								visited[_.util.objId(o[i])] = true;
+								_.languages.DFS(o[i], callback, null, visited);
+							} else if (_.util.type(o[i]) === 'Array' && !visited[_.util.objId(o[i])]) {
+								visited[_.util.objId(o[i])] = true;
+								_.languages.DFS(o[i], callback, i, visited);
+							}
+						}
+					}
+				}
+			},
+			plugins: {},
+
+			highlightAll: function highlightAll(async, callback) {
+				var elements = document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');
+
+				for (var i = 0, element; element = elements[i++];) {
+					_.highlightElement(element, async === true, callback);
+				}
+			},
+
+			highlightElement: function highlightElement(element, async, callback) {
+				// Find language
+				var language,
+				    grammar,
+				    parent = element;
+
+				while (parent && !lang.test(parent.className)) {
+					parent = parent.parentNode;
+				}
+
+				if (parent) {
+					language = (parent.className.match(lang) || [, ''])[1];
+					grammar = _.languages[language];
+				}
+
+				// Set language on the element, if not present
+				element.className = element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+
+				// Set language on the parent, for styling
+				parent = element.parentNode;
+
+				if (/pre/i.test(parent.nodeName)) {
+					parent.className = parent.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language;
+				}
+
+				var code = element.textContent;
+
+				var env = {
+					element: element,
+					language: language,
+					grammar: grammar,
+					code: code
+				};
+
+				if (!code || !grammar) {
+					_.hooks.run('complete', env);
+					return;
+				}
+
+				_.hooks.run('before-highlight', env);
+
+				if (async && _self.Worker) {
+					var worker = new Worker(_.filename);
+
+					worker.onmessage = function (evt) {
+						env.highlightedCode = evt.data;
+
+						_.hooks.run('before-insert', env);
+
+						env.element.innerHTML = env.highlightedCode;
+
+						callback && callback.call(env.element);
+						_.hooks.run('after-highlight', env);
+						_.hooks.run('complete', env);
+					};
+
+					worker.postMessage(JSON.stringify({
+						language: env.language,
+						code: env.code,
+						immediateClose: true
+					}));
+				} else {
+					env.highlightedCode = _.highlight(env.code, env.grammar, env.language);
+
+					_.hooks.run('before-insert', env);
+
+					env.element.innerHTML = env.highlightedCode;
+
+					callback && callback.call(element);
+
+					_.hooks.run('after-highlight', env);
+					_.hooks.run('complete', env);
+				}
+			},
+
+			highlight: function highlight(text, grammar, language) {
+				var tokens = _.tokenize(text, grammar);
+				return Token.stringify(_.util.encode(tokens), language);
+			},
+
+			tokenize: function tokenize(text, grammar, language) {
+				var Token = _.Token;
+
+				var strarr = [text];
+
+				var rest = grammar.rest;
+
+				if (rest) {
+					for (var token in rest) {
+						grammar[token] = rest[token];
+					}
+
+					delete grammar.rest;
+				}
+
+				tokenloop: for (var token in grammar) {
+					if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+						continue;
+					}
+
+					var patterns = grammar[token];
+					patterns = _.util.type(patterns) === "Array" ? patterns : [patterns];
+
+					for (var j = 0; j < patterns.length; ++j) {
+						var pattern = patterns[j],
+						    inside = pattern.inside,
+						    lookbehind = !!pattern.lookbehind,
+						    lookbehindLength = 0,
+						    alias = pattern.alias;
+
+						pattern = pattern.pattern || pattern;
+
+						for (var i = 0; i < strarr.length; i++) {
+							// Don’t cache length as it changes during the loop
+
+							var str = strarr[i];
+
+							if (strarr.length > text.length) {
+								// Something went terribly wrong, ABORT, ABORT!
+								break tokenloop;
+							}
+
+							if (str instanceof Token) {
+								continue;
+							}
+
+							pattern.lastIndex = 0;
+
+							var match = pattern.exec(str);
+
+							if (match) {
+								if (lookbehind) {
+									lookbehindLength = match[1].length;
+								}
+
+								var from = match.index - 1 + lookbehindLength,
+								    match = match[0].slice(lookbehindLength),
+								    len = match.length,
+								    to = from + len,
+								    before = str.slice(0, from + 1),
+								    after = str.slice(to + 1);
+
+								var args = [i, 1];
+
+								if (before) {
+									args.push(before);
+								}
+
+								var wrapped = new Token(token, inside ? _.tokenize(match, inside) : match, alias);
+
+								args.push(wrapped);
+
+								if (after) {
+									args.push(after);
+								}
+
+								Array.prototype.splice.apply(strarr, args);
+							}
+						}
+					}
+				}
+
+				return strarr;
+			},
+
+			hooks: {
+				all: {},
+
+				add: function add(name, callback) {
+					var hooks = _.hooks.all;
+
+					hooks[name] = hooks[name] || [];
+
+					hooks[name].push(callback);
+				},
+
+				run: function run(name, env) {
+					var callbacks = _.hooks.all[name];
+
+					if (!callbacks || !callbacks.length) {
+						return;
+					}
+
+					for (var i = 0, callback; callback = callbacks[i++];) {
+						callback(env);
+					}
+				}
+			}
+		};
+
+		var Token = _.Token = function (type, content, alias) {
+			this.type = type;
+			this.content = content;
+			this.alias = alias;
+		};
+
+		Token.stringify = function (o, language, parent) {
+			if (typeof o == 'string') {
+				return o;
+			}
+
+			if (_.util.type(o) === 'Array') {
+				return o.map(function (element) {
+					return Token.stringify(element, language, o);
+				}).join('');
+			}
+
+			var env = {
+				type: o.type,
+				content: Token.stringify(o.content, language, parent),
+				tag: 'span',
+				classes: ['token', o.type],
+				attributes: {},
+				language: language,
+				parent: parent
+			};
+
+			if (env.type == 'comment') {
+				env.attributes['spellcheck'] = 'true';
+			}
+
+			if (o.alias) {
+				var aliases = _.util.type(o.alias) === 'Array' ? o.alias : [o.alias];
+				Array.prototype.push.apply(env.classes, aliases);
+			}
+
+			_.hooks.run('wrap', env);
+
+			var attributes = '';
+
+			for (var name in env.attributes) {
+				attributes += (attributes ? ' ' : '') + name + '="' + (env.attributes[name] || '') + '"';
+			}
+
+			return '<' + env.tag + ' class="' + env.classes.join(' ') + '" ' + attributes + '>' + env.content + '</' + env.tag + '>';
+		};
+
+		if (!_self.document) {
+			if (!_self.addEventListener) {
+				// in Node.js
+				return _self.Prism;
+			}
+			// In worker
+			_self.addEventListener('message', function (evt) {
+				var message = JSON.parse(evt.data),
+				    lang = message.language,
+				    code = message.code,
+				    immediateClose = message.immediateClose;
+
+				_self.postMessage(_.highlight(code, _.languages[lang], lang));
+				if (immediateClose) {
+					_self.close();
+				}
+			}, false);
+
+			return _self.Prism;
+		}
+
+		//Get current script and highlight
+		var script = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
+
+		if (script) {
+			_.filename = script.src;
+
+			if (document.addEventListener && !script.hasAttribute('data-manual')) {
+				document.addEventListener('DOMContentLoaded', _.highlightAll);
+			}
+		}
+
+		return _self.Prism;
+	}();
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = Prism;
+	}
+
+	// hack for components to work correctly in node.js
+	if (typeof global !== 'undefined') {
+		global.Prism = Prism;
+	}
+
+	/* **********************************************
+	     Begin prism-markup.js
+	********************************************** */
+
+	Prism.languages.markup = {
+		'comment': /<!--[\w\W]*?-->/,
+		'prolog': /<\?[\w\W]+?\?>/,
+		'doctype': /<!DOCTYPE[\w\W]+?>/,
+		'cdata': /<!\[CDATA\[[\w\W]*?]]>/i,
+		'tag': {
+			pattern: /<\/?(?!\d)[^\s>\/=.$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,
+			inside: {
+				'tag': {
+					pattern: /^<\/?[^\s>\/]+/i,
+					inside: {
+						'punctuation': /^<\/?/,
+						'namespace': /^[^\s>\/:]+:/
+					}
+				},
+				'attr-value': {
+					pattern: /=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,
+					inside: {
+						'punctuation': /[=>"']/
+					}
+				},
+				'punctuation': /\/?>/,
+				'attr-name': {
+					pattern: /[^\s>\/]+/,
+					inside: {
+						'namespace': /^[^\s>\/:]+:/
+					}
+				}
+
+			}
+		},
+		'entity': /&#?[\da-z]{1,8};/i
+	};
+
+	// Plugin to make entity title show the real entity, idea by Roman Komarov
+	Prism.hooks.add('wrap', function (env) {
+
+		if (env.type === 'entity') {
+			env.attributes['title'] = env.content.replace(/&amp;/, '&');
+		}
+	});
+
+	Prism.languages.xml = Prism.languages.markup;
+	Prism.languages.html = Prism.languages.markup;
+	Prism.languages.mathml = Prism.languages.markup;
+	Prism.languages.svg = Prism.languages.markup;
+
+	/* **********************************************
+	     Begin prism-css.js
+	********************************************** */
+
+	Prism.languages.css = {
+		'comment': /\/\*[\w\W]*?\*\//,
+		'atrule': {
+			pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
+			inside: {
+				'rule': /@[\w-]+/
+				// See rest below
+			}
+		},
+		'url': /url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
+		'selector': /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
+		'string': /("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,
+		'property': /(\b|\B)[\w-]+(?=\s*:)/i,
+		'important': /\B!important\b/i,
+		'function': /[-a-z0-9]+(?=\()/i,
+		'punctuation': /[(){};:]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css);
+
+	if (Prism.languages.markup) {
+		Prism.languages.insertBefore('markup', 'tag', {
+			'style': {
+				pattern: /(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,
+				lookbehind: true,
+				inside: Prism.languages.css,
+				alias: 'language-css'
+			}
+		});
+
+		Prism.languages.insertBefore('inside', 'attr-value', {
+			'style-attr': {
+				pattern: /\s*style=("|').*?\1/i,
+				inside: {
+					'attr-name': {
+						pattern: /^\s*style/i,
+						inside: Prism.languages.markup.tag.inside
+					},
+					'punctuation': /^\s*=\s*['"]|['"]\s*$/,
+					'attr-value': {
+						pattern: /.+/i,
+						inside: Prism.languages.css
+					}
+				},
+				alias: 'language-css'
+			}
+		}, Prism.languages.markup.tag);
+	}
+
+	/* **********************************************
+	     Begin prism-clike.js
+	********************************************** */
+
+	Prism.languages.clike = {
+		'comment': [{
+			pattern: /(^|[^\\])\/\*[\w\W]*?\*\//,
+			lookbehind: true
+		}, {
+			pattern: /(^|[^\\:])\/\/.*/,
+			lookbehind: true
+		}],
+		'string': /(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+		'class-name': {
+			pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,
+			lookbehind: true,
+			inside: {
+				punctuation: /(\.|\\)/
+			}
+		},
+		'keyword': /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
+		'boolean': /\b(true|false)\b/,
+		'function': /[a-z0-9_]+(?=\()/i,
+		'number': /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
+		'operator': /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
+		'punctuation': /[{}[\];(),.:]/
+	};
+
+	/* **********************************************
+	     Begin prism-javascript.js
+	********************************************** */
+
+	Prism.languages.javascript = Prism.languages.extend('clike', {
+		'keyword': /\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|var|void|while|with|yield)\b/,
+		'number': /\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
+		// Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+		'function': /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i
+	});
+
+	Prism.languages.insertBefore('javascript', 'keyword', {
+		'regex': {
+			pattern: /(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\\\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
+			lookbehind: true
+		}
+	});
+
+	Prism.languages.insertBefore('javascript', 'class-name', {
+		'template-string': {
+			pattern: /`(?:\\`|\\?[^`])*`/,
+			inside: {
+				'interpolation': {
+					pattern: /\$\{[^}]+\}/,
+					inside: {
+						'interpolation-punctuation': {
+							pattern: /^\$\{|\}$/,
+							alias: 'punctuation'
+						},
+						rest: Prism.languages.javascript
+					}
+				},
+				'string': /[\s\S]+/
+			}
+		}
+	});
+
+	if (Prism.languages.markup) {
+		Prism.languages.insertBefore('markup', 'tag', {
+			'script': {
+				pattern: /(<script[\w\W]*?>)[\w\W]*?(?=<\/script>)/i,
+				lookbehind: true,
+				inside: Prism.languages.javascript,
+				alias: 'language-javascript'
+			}
+		});
+	}
+
+	Prism.languages.js = Prism.languages.javascript;
+
+	/* **********************************************
+	     Begin prism-file-highlight.js
+	********************************************** */
+
+	(function () {
+		if (typeof self === 'undefined' || !self.Prism || !self.document || !document.querySelector) {
+			return;
+		}
+
+		self.Prism.fileHighlight = function () {
+
+			var Extensions = {
+				'js': 'javascript',
+				'html': 'markup',
+				'svg': 'markup',
+				'xml': 'markup',
+				'py': 'python',
+				'rb': 'ruby',
+				'ps1': 'powershell',
+				'psm1': 'powershell'
+			};
+
+			if (Array.prototype.forEach) {
+				// Check to prevent error in IE8
+				Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+					var src = pre.getAttribute('data-src');
+
+					var language,
+					    parent = pre;
+					var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
+					while (parent && !lang.test(parent.className)) {
+						parent = parent.parentNode;
+					}
+
+					if (parent) {
+						language = (pre.className.match(lang) || [, ''])[1];
+					}
+
+					if (!language) {
+						var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+						language = Extensions[extension] || extension;
+					}
+
+					var code = document.createElement('code');
+					code.className = 'language-' + language;
+
+					pre.textContent = '';
+
+					code.textContent = 'Loading…';
+
+					pre.appendChild(code);
+
+					var xhr = new XMLHttpRequest();
+
+					xhr.open('GET', src, true);
+
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState == 4) {
+
+							if (xhr.status < 400 && xhr.responseText) {
+								code.textContent = xhr.responseText;
+
+								Prism.highlightElement(code);
+							} else if (xhr.status >= 400) {
+								code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+							} else {
+								code.textContent = '✖ Error: File does not exist or is empty';
+							}
+						}
+					};
+
+					xhr.send(null);
+				});
+			}
+		};
+
+		document.addEventListener('DOMContentLoaded', self.Prism.fileHighlight);
+	})();
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(20);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../css-loader/index.js!./prism-okaidia.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./prism-okaidia.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/**\n * okaidia theme for JavaScript, CSS and HTML\n * Loosely based on Monokai textmate theme by http://www.monokai.nl/\n * @author ocodia\n */\n\ncode[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tcolor: #f8f8f2;\n\tbackground: none;\n\ttext-shadow: 0 1px rgba(0, 0, 0, 0.3);\n\tfont-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n\tdirection: ltr;\n\ttext-align: left;\n\twhite-space: pre;\n\tword-spacing: normal;\n\tword-break: normal;\n\tword-wrap: normal;\n\tline-height: 1.5;\n\n\t-moz-tab-size: 4;\n\t-o-tab-size: 4;\n\ttab-size: 4;\n\n\t-webkit-hyphens: none;\n\t-moz-hyphens: none;\n\t-ms-hyphens: none;\n\thyphens: none;\n}\n\n/* Code blocks */\npre[class*=\"language-\"] {\n\tpadding: 1em;\n\tmargin: .5em 0;\n\toverflow: auto;\n\tborder-radius: 0.3em;\n}\n\n:not(pre) > code[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tbackground: #272822;\n}\n\n/* Inline code */\n:not(pre) > code[class*=\"language-\"] {\n\tpadding: .1em;\n\tborder-radius: .3em;\n\twhite-space: normal;\n}\n\n.token.comment,\n.token.prolog,\n.token.doctype,\n.token.cdata {\n\tcolor: slategray;\n}\n\n.token.punctuation {\n\tcolor: #f8f8f2;\n}\n\n.namespace {\n\topacity: .7;\n}\n\n.token.property,\n.token.tag,\n.token.constant,\n.token.symbol,\n.token.deleted {\n\tcolor: #f92672;\n}\n\n.token.boolean,\n.token.number {\n\tcolor: #ae81ff;\n}\n\n.token.selector,\n.token.attr-name,\n.token.string,\n.token.char,\n.token.builtin,\n.token.inserted {\n\tcolor: #a6e22e;\n}\n\n.token.operator,\n.token.entity,\n.token.url,\n.language-css .token.string,\n.style .token.string,\n.token.variable {\n\tcolor: #f8f8f2;\n}\n\n.token.atrule,\n.token.attr-value,\n.token.function {\n\tcolor: #e6db74;\n}\n\n.token.keyword {\n\tcolor: #66d9ef;\n}\n\n.token.regex,\n.token.important {\n\tcolor: #fd971f;\n}\n\n.token.important,\n.token.bold {\n\tfont-weight: bold;\n}\n.token.italic {\n\tfont-style: italic;\n}\n\n.token.entity {\n\tcursor: help;\n}\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);

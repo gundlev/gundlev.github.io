@@ -1,5 +1,7 @@
 // Require the SASS file, compile it to CSS and insert it on the page
 require('../sass/styles.scss');
+require('../../node_modules/prismjs/themes/prism-okaidia.css');
+require('../../node_modules/prismjs/prism.js');
 
 // Store a reference to the Jade template function
 var template = require('../jade/index.jade');
@@ -10,16 +12,9 @@ var articles = [];
 
 articles.push({
   id: 1,
-  date: '2016-03-01',
-  title: 'Test article',
-  content: require('../../articles/test.md')
-});
-
-articles.push({
-  id: 2,
   date: '2016-03-03',
-  title: 'Work',
-  content: require('../../articles/work.md')
+  title: 'Updating nested properties dynamically in MongoDB',
+  content: require('../../articles/updating-nested-properties.md')
 });
 
 // Render the template on the page
@@ -51,6 +46,14 @@ articleSelect.addEventListener('change', function() {
   })
   document.querySelector('body').appendChild(articlePlaceholder);
 
+  // Set code hightlighting
+  var codeNodes = getElements('code[class^="lang-"]');
+  for (let node of codeNodes) {
+    node.className = node.className.replace('lang', 'language');
+    node.parentNode.classList.add(node.className);
+  }
+  Prism.highlightAll();
+  
   // Handle animation
   setTimeout(() => articlePlaceholder.classList.add('active'), 10);
   
