@@ -67,9 +67,9 @@
 	});
 
 	// Render the template on the page
-	document.querySelector('body').innerHTML(template({
+	document.querySelector('body').innerHTML = template({
 	  articles: articles
-	}));
+	});
 
 	// Attach events to all article links
 	var articleSelect = getElements('.articles')[0];
