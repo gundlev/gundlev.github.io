@@ -132,3 +132,19 @@ main.index {
   line-height: 1.45em;
 }
 
+.article .meta {
+  padding: 1em 0em 1em 0em;
+}
+
+.article .meta__author {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  font-style: italic;
+} 
+
+.article .meta__date {
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
