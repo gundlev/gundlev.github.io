@@ -51,20 +51,23 @@
 	var template = __webpack_require__(6);
 
 	// Store all articles in array
+	var articleTemplate = __webpack_require__(9);
 	var articles = [];
 	articles.push({
-	  'id': 1,
-	  'title': 'Test article',
-	  'content': __webpack_require__(9)
+	  id: 1,
+	  date: '2016-03-01',
+	  title: 'Test article',
+	  content: __webpack_require__(10)
 	});
 	articles.push({
-	  'id': 2,
-	  'title': 'Work',
-	  'content': __webpack_require__(10)
+	  id: 2,
+	  date: '2016-03-03',
+	  title: 'Work',
+	  content: __webpack_require__(11)
 	});
 
 	// Render the template on the page
-	document.write(template({
+	document.querySelector('body').innerHTML(template({
 	  articles: articles
 	}));
 
@@ -75,15 +78,24 @@
 	  // Pick the chosen article
 	  var article = articles.filter(a => a.id === parseInt(this.value))[0];
 
-	  // Create article placeholder (after removing previous)
+	  // Remove existing article if it exists
 	  var existingArticle = document.querySelector('.article');
 	  if (existingArticle) remove(existingArticle);
 
 	  // Create new article
 	  var articlePlaceholder = document.createElement('div');
 	  articlePlaceholder.classList.add('article');
-	  articlePlaceholder.innerHTML = article.content;
+
+	  // Set the article content and append to DOM
+	  articlePlaceholder.innerHTML = articleTemplate({
+	    author: 'Theodor C. Listov Lindekaer',
+	    date: article.date,
+	    title: article.title,
+	    content: article.content
+	  });
 	  document.querySelector('body').appendChild(articlePlaceholder);
+
+	  // Handle animation
 	  setTimeout(() => articlePlaceholder.classList.add('active'), 10);
 	});
 
@@ -103,6 +115,19 @@
 	  element.parentNode.removeChild(element);
 	}
 
+	function create(element, text, cssClass) {
+	  var node = document.createElement(element);
+	  node.textContent = text;
+	  if (cssClass) {
+	    node.classList.add(cssClass);
+	  }
+	  return node;
+	}
+
+	function insertAfter(newNode, referenceNode) {
+	  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+	}
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -119,8 +144,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/autoprefixer-loader/index.js!./../node_modules/sass-loader/index.js!./styles.scss", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/autoprefixer-loader/index.js!./../node_modules/sass-loader/index.js!./styles.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./styles.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/autoprefixer-loader/index.js!./../../node_modules/sass-loader/index.js!./styles.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -138,7 +163,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 4.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 1.8em;\n  margin-top: 1.2em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 0.5em;\n  line-height: 1.45em; }\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 4.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 3em;\n  margin-top: 1.2em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 0.5em;\n  line-height: 1.45em; }\n", ""]);
 
 	// exports
 
@@ -744,15 +769,29 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<h1 id=\"test\">Test</h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores dolor expedita voluptatem atque suscipit nisi distinctio eos, incidunt labore a magni earum veniam maxime, ipsa mollitia quas enim delectus, porro.</p>\n";
+	var jade = __webpack_require__(7);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (author, content, date, title) {
+	buf.push("<h1>" + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "</h1><div class=\"meta\"><div class=\"meta__author\">" + (jade.escape((jade_interp = author) == null ? '' : jade_interp)) + "</div><div class=\"meta__date\">" + (jade.escape((jade_interp = date) == null ? '' : jade_interp)) + "</div></div>" + (((jade_interp = content) == null ? '' : jade_interp)) + "");}.call(this,"author" in locals_for_with?locals_for_with.author:typeof author!=="undefined"?author:undefined,"content" in locals_for_with?locals_for_with.content:typeof content!=="undefined"?content:undefined,"date" in locals_for_with?locals_for_with.date:typeof date!=="undefined"?date:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
+	}
 
 /***/ },
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1 id=\"work\">Work</h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<h2 id=\"doom\">Doom</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n";
+	module.exports = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores dolor expedita voluptatem atque suscipit nisi distinctio eos, incidunt labore a magni earum veniam maxime, ipsa mollitia quas enim delectus, porro.</p>\n";
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<h2 id=\"doom\">Doom</h2>\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n";
 
 /***/ }
 /******/ ]);
