@@ -44,6 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	alert("Hey!");
+
 	// Require the SASS file, compile it to CSS and insert it on the page
 	__webpack_require__(1);
 
@@ -53,12 +55,14 @@
 	// Store all articles in array
 	var articleTemplate = __webpack_require__(9);
 	var articles = [];
+
 	articles.push({
 	  id: 1,
 	  date: '2016-03-01',
 	  title: 'Test article',
 	  content: __webpack_require__(10)
 	});
+
 	articles.push({
 	  id: 2,
 	  date: '2016-03-03',

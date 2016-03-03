@@ -1,3 +1,5 @@
+alert("Hey!")
+
 // Require the SASS file, compile it to CSS and insert it on the page
 require('../sass/styles.scss');
 
@@ -7,12 +9,14 @@ var template = require('../jade/index.jade');
 // Store all articles in array
 var articleTemplate = require('../jade/_article-template.jade');
 var articles = [];
+
 articles.push({
   id: 1,
   date: '2016-03-01',
   title: 'Test article',
   content: require('../../articles/test.md')
 });
+
 articles.push({
   id: 2,
   date: '2016-03-03',
