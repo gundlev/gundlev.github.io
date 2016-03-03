@@ -1,5 +1,3 @@
-alert("Hey!")
-
 // Require the SASS file, compile it to CSS and insert it on the page
 require('../sass/styles.scss');
 

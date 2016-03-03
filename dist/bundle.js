@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	alert("Hey!");
+	'use strict';
 
 	// Require the SASS file, compile it to CSS and insert it on the page
 	__webpack_require__(1);
@@ -78,9 +78,12 @@
 	// Attach events to all article links
 	var articleSelect = getElements('.articles')[0];
 	articleSelect.addEventListener('change', function () {
+	  var _this = this;
 
 	  // Pick the chosen article
-	  var article = articles.filter(a => a.id === parseInt(this.value))[0];
+	  var article = articles.filter(function (a) {
+	    return a.id === parseInt(_this.value);
+	  })[0];
 
 	  // Remove existing article if it exists
 	  var existingArticle = document.querySelector('.article');
@@ -100,7 +103,9 @@
 	  document.querySelector('body').appendChild(articlePlaceholder);
 
 	  // Handle animation
-	  setTimeout(() => articlePlaceholder.classList.add('active'), 10);
+	  setTimeout(function () {
+	    return articlePlaceholder.classList.add('active');
+	  }, 10);
 	});
 
 	/*
@@ -175,6 +180,8 @@
 /***/ },
 /* 3 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/*
 		MIT License http://www.opensource.org/licenses/mit-license.php
@@ -540,6 +547,8 @@
 	 * @api private
 	 */
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	exports.merge = function merge(a, b) {
 	  if (arguments.length === 1) {
 	    var attrs = a[0];
@@ -588,7 +597,7 @@
 	 */
 	exports.joinClasses = joinClasses;
 	function joinClasses(val) {
-	  return (Array.isArray(val) ? val.map(joinClasses) : val && typeof val === 'object' ? Object.keys(val).filter(function (key) {
+	  return (Array.isArray(val) ? val.map(joinClasses) : val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object' ? Object.keys(val).filter(function (key) {
 	    return val[key];
 	  }) : [val]).filter(nulls).join(' ');
 	}
@@ -618,7 +627,7 @@
 	};
 
 	exports.style = function (val) {
-	  if (val && typeof val === 'object') {
+	  if (val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
 	    return Object.keys(val).map(function (style) {
 	      return style + ':' + val[style];
 	    }).join(';');
