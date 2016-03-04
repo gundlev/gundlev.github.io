@@ -97,6 +97,9 @@
 	  });
 	  document.querySelector('body').appendChild(articlePlaceholder);
 
+	  // Change URL accordingly
+	  history.pushState(null, null, slugify(article.title) + '.html');
+
 	  // Set code hightlighting
 	  var codeNodes = getElements('code[class^="lang-"]');
 	  var _iteratorNormalCompletion = true;
@@ -160,6 +163,10 @@
 
 	function insertAfter(newNode, referenceNode) {
 	  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+	}
+
+	function slugify(str) {
+	  return str.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
 	}
 
 /***/ },
@@ -1282,7 +1289,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (articles, undefined) {
-	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option>Pick an article</option>");
+	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option>--> Stuff I've written <--</option>");
 	// iterate articles
 	;(function(){
 	  var $$obj = articles;

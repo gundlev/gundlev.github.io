@@ -14,7 +14,7 @@ articles.push({
   id: 1,
   date: '2016-03-03',
   title: 'Updating nested properties dynamically in MongoDB',
-  content: require('../../articles/updating-nested-properties.md')
+  content: require('../../articles/updating-nested-properties-dynamically-in-mongodb.md')
 });
 
 // Render the template on the page
@@ -45,6 +45,9 @@ articleSelect.addEventListener('change', function() {
     content: article.content
   })
   document.querySelector('body').appendChild(articlePlaceholder);
+
+  // Change URL accordingly
+  history.pushState(null, null, `${slugify(article.title)}.html`)
 
   // Set code hightlighting
   var codeNodes = getElements('code[class^="lang-"]');
@@ -86,4 +89,13 @@ function create(element, text, cssClass) {
 
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function slugify(str) {
+  return str.toString().toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\-]+/g, '')
+    .replace(/\-\-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
 }
