@@ -48,21 +48,21 @@
 
 	// Require the SASS file, compile it to CSS and insert it on the page
 	__webpack_require__(1);
-	__webpack_require__(19);
-	__webpack_require__(14);
+	__webpack_require__(6);
+	__webpack_require__(8);
 
 	// Store a reference to the Jade template function
-	var template = __webpack_require__(6);
+	var template = __webpack_require__(9);
 
 	// Store all articles in array
-	var articleTemplate = __webpack_require__(9);
+	var articleTemplate = __webpack_require__(12);
 	var articles = [];
 
 	articles.push({
 	  id: 1,
 	  date: '2016-03-03',
 	  title: 'Updating nested properties dynamically in MongoDB',
-	  content: __webpack_require__(11)
+	  content: __webpack_require__(13)
 	});
 
 	// Render the template on the page
@@ -197,7 +197,7 @@
 
 
 	// module
-	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\ncode {\n  font-size: 90%; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 3.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px;\n  font-size: 1em; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 3em;\n  margin-top: 1em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 1em;\n  line-height: 1.45em; }\n\n.article .meta {\n  padding: 1em 0em 1em 0em; }\n\n.article .meta__author {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article .meta__date {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article pre {\n  margin-top: 1.1em !important; }\n\n.article p code {\n  padding: 2px 4px;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px; }\n", ""]);
+	exports.push([module.id, "@font-face {\n  font-family: 'ColorsOfAutumn';\n  src: url(" + __webpack_require__(4) + "); }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Reset\n|\n-----------------------------------------------------------------------------------\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Base\n|\n-----------------------------------------------------------------------------------\n*/\nhtml {\n  font-family: 'Helvetica';\n  font-size: 20px; }\n  @media (max-width: 720px) {\n    html {\n      font-size: 16px; } }\n\nbody {\n  padding-top: 6em; }\n  @media (max-width: 720px) {\n    body {\n      padding-top: 3em; } }\n\ncode {\n  font-size: 90%; }\n\n/*\n-----------------------------------------------------------------------------------\n|\n| Index\n|\n-----------------------------------------------------------------------------------\n*/\nmain.index {\n  text-align: center; }\n\n.headline {\n  font-size: 3.5em;\n  font-family: 'ColorsOfAutumn'; }\n\n.contact {\n  margin-top: 0.8em; }\n\n.articles {\n  margin-top: 2em;\n  min-width: 200px;\n  font-size: 1em; }\n\n.article {\n  margin: 3em auto 0em auto;\n  max-width: 840px;\n  padding: 1em;\n  -webkit-transition: all 0.400s ease-in-out;\n  transition: all 0.400s ease-in-out;\n  opacity: 0;\n  -webkit-transform: translateY(40px);\n          transform: translateY(40px); }\n  @media (max-width: 720px) {\n    .article {\n      padding: 0em 1.5em 0em 1.5em; } }\n  .article.active {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n\n.article h1 {\n  font-size: 3em;\n  margin-top: 1em;\n  line-height: 1.2em; }\n\n.article h2 {\n  font-size: 1.4em;\n  margin-top: 1.2em; }\n\n.article p {\n  margin-top: 1em;\n  line-height: 1.45em; }\n\n.article .meta {\n  padding: 1em 0em 1em 0em; }\n\n.article .meta__author {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article .meta__date {\n  margin-top: 0.5em;\n  font-size: 0.8em;\n  font-style: italic; }\n\n.article pre {\n  margin-top: 1.1em !important; }\n\n.article p code {\n  padding: 2px 4px;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px; }\n", ""]);
 
 	// exports
 
@@ -521,315 +521,44 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jade = __webpack_require__(7);
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-	;var locals_for_with = (locals || {});(function (articles, undefined) {
-	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option>Pick an article</option>");
-	// iterate articles
-	;(function(){
-	  var $$obj = articles;
-	  if ('number' == typeof $$obj.length) {
-
-	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
-	      var article = $$obj[$index];
-
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
-	    }
-
-	  } else {
-	    var $$l = 0;
-	    for (var $index in $$obj) {
-	      $$l++;      var article = $$obj[$index];
-
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
-	    }
-
-	  }
-	}).call(this);
-
-	buf.push("</select></main>");}.call(this,"articles" in locals_for_with?locals_for_with.articles:typeof articles!=="undefined"?articles:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
+	// load the styles
+	var content = __webpack_require__(7);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../css-loader/index.js!./prism-okaidia.css", function() {
+				var newContent = require("!!./../../css-loader/index.js!./prism-okaidia.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
 	}
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	exports = module.exports = __webpack_require__(3)();
+	// imports
 
-	/**
-	 * Merge two attribute objects giving precedence
-	 * to values in object `b`. Classes are special-cased
-	 * allowing for arrays and merging/joining appropriately
-	 * resulting in a string.
-	 *
-	 * @param {Object} a
-	 * @param {Object} b
-	 * @return {Object} a
-	 * @api private
-	 */
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	// module
+	exports.push([module.id, "/**\n * okaidia theme for JavaScript, CSS and HTML\n * Loosely based on Monokai textmate theme by http://www.monokai.nl/\n * @author ocodia\n */\n\ncode[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tcolor: #f8f8f2;\n\tbackground: none;\n\ttext-shadow: 0 1px rgba(0, 0, 0, 0.3);\n\tfont-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n\tdirection: ltr;\n\ttext-align: left;\n\twhite-space: pre;\n\tword-spacing: normal;\n\tword-break: normal;\n\tword-wrap: normal;\n\tline-height: 1.5;\n\n\t-moz-tab-size: 4;\n\t-o-tab-size: 4;\n\ttab-size: 4;\n\n\t-webkit-hyphens: none;\n\t-moz-hyphens: none;\n\t-ms-hyphens: none;\n\thyphens: none;\n}\n\n/* Code blocks */\npre[class*=\"language-\"] {\n\tpadding: 1em;\n\tmargin: .5em 0;\n\toverflow: auto;\n\tborder-radius: 0.3em;\n}\n\n:not(pre) > code[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tbackground: #272822;\n}\n\n/* Inline code */\n:not(pre) > code[class*=\"language-\"] {\n\tpadding: .1em;\n\tborder-radius: .3em;\n\twhite-space: normal;\n}\n\n.token.comment,\n.token.prolog,\n.token.doctype,\n.token.cdata {\n\tcolor: slategray;\n}\n\n.token.punctuation {\n\tcolor: #f8f8f2;\n}\n\n.namespace {\n\topacity: .7;\n}\n\n.token.property,\n.token.tag,\n.token.constant,\n.token.symbol,\n.token.deleted {\n\tcolor: #f92672;\n}\n\n.token.boolean,\n.token.number {\n\tcolor: #ae81ff;\n}\n\n.token.selector,\n.token.attr-name,\n.token.string,\n.token.char,\n.token.builtin,\n.token.inserted {\n\tcolor: #a6e22e;\n}\n\n.token.operator,\n.token.entity,\n.token.url,\n.language-css .token.string,\n.style .token.string,\n.token.variable {\n\tcolor: #f8f8f2;\n}\n\n.token.atrule,\n.token.attr-value,\n.token.function {\n\tcolor: #e6db74;\n}\n\n.token.keyword {\n\tcolor: #66d9ef;\n}\n\n.token.regex,\n.token.important {\n\tcolor: #fd971f;\n}\n\n.token.important,\n.token.bold {\n\tfont-weight: bold;\n}\n.token.italic {\n\tfont-style: italic;\n}\n\n.token.entity {\n\tcursor: help;\n}\n", ""]);
 
-	exports.merge = function merge(a, b) {
-	  if (arguments.length === 1) {
-	    var attrs = a[0];
-	    for (var i = 1; i < a.length; i++) {
-	      attrs = merge(attrs, a[i]);
-	    }
-	    return attrs;
-	  }
-	  var ac = a['class'];
-	  var bc = b['class'];
+	// exports
 
-	  if (ac || bc) {
-	    ac = ac || [];
-	    bc = bc || [];
-	    if (!Array.isArray(ac)) ac = [ac];
-	    if (!Array.isArray(bc)) bc = [bc];
-	    a['class'] = ac.concat(bc).filter(nulls);
-	  }
-
-	  for (var key in b) {
-	    if (key != 'class') {
-	      a[key] = b[key];
-	    }
-	  }
-
-	  return a;
-	};
-
-	/**
-	 * Filter null `val`s.
-	 *
-	 * @param {*} val
-	 * @return {Boolean}
-	 * @api private
-	 */
-
-	function nulls(val) {
-	  return val != null && val !== '';
-	}
-
-	/**
-	 * join array as classes.
-	 *
-	 * @param {*} val
-	 * @return {String}
-	 */
-	exports.joinClasses = joinClasses;
-	function joinClasses(val) {
-	  return (Array.isArray(val) ? val.map(joinClasses) : val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object' ? Object.keys(val).filter(function (key) {
-	    return val[key];
-	  }) : [val]).filter(nulls).join(' ');
-	}
-
-	/**
-	 * Render the given classes.
-	 *
-	 * @param {Array} classes
-	 * @param {Array.<Boolean>} escaped
-	 * @return {String}
-	 */
-	exports.cls = function cls(classes, escaped) {
-	  var buf = [];
-	  for (var i = 0; i < classes.length; i++) {
-	    if (escaped && escaped[i]) {
-	      buf.push(exports.escape(joinClasses([classes[i]])));
-	    } else {
-	      buf.push(joinClasses(classes[i]));
-	    }
-	  }
-	  var text = joinClasses(buf);
-	  if (text.length) {
-	    return ' class="' + text + '"';
-	  } else {
-	    return '';
-	  }
-	};
-
-	exports.style = function (val) {
-	  if (val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
-	    return Object.keys(val).map(function (style) {
-	      return style + ':' + val[style];
-	    }).join(';');
-	  } else {
-	    return val;
-	  }
-	};
-	/**
-	 * Render the given attribute.
-	 *
-	 * @param {String} key
-	 * @param {String} val
-	 * @param {Boolean} escaped
-	 * @param {Boolean} terse
-	 * @return {String}
-	 */
-	exports.attr = function attr(key, val, escaped, terse) {
-	  if (key === 'style') {
-	    val = exports.style(val);
-	  }
-	  if ('boolean' == typeof val || null == val) {
-	    if (val) {
-	      return ' ' + (terse ? key : key + '="' + key + '"');
-	    } else {
-	      return '';
-	    }
-	  } else if (0 == key.indexOf('data') && 'string' != typeof val) {
-	    if (JSON.stringify(val).indexOf('&') !== -1) {
-	      console.warn('Since Jade 2.0.0, ampersands (`&`) in data attributes ' + 'will be escaped to `&amp;`');
-	    };
-	    if (val && typeof val.toISOString === 'function') {
-	      console.warn('Jade will eliminate the double quotes around dates in ' + 'ISO form after 2.0.0');
-	    }
-	    return ' ' + key + "='" + JSON.stringify(val).replace(/'/g, '&apos;') + "'";
-	  } else if (escaped) {
-	    if (val && typeof val.toISOString === 'function') {
-	      console.warn('Jade will stringify dates in ISO form after 2.0.0');
-	    }
-	    return ' ' + key + '="' + exports.escape(val) + '"';
-	  } else {
-	    if (val && typeof val.toISOString === 'function') {
-	      console.warn('Jade will stringify dates in ISO form after 2.0.0');
-	    }
-	    return ' ' + key + '="' + val + '"';
-	  }
-	};
-
-	/**
-	 * Render the given attributes object.
-	 *
-	 * @param {Object} obj
-	 * @param {Object} escaped
-	 * @return {String}
-	 */
-	exports.attrs = function attrs(obj, terse) {
-	  var buf = [];
-
-	  var keys = Object.keys(obj);
-
-	  if (keys.length) {
-	    for (var i = 0; i < keys.length; ++i) {
-	      var key = keys[i],
-	          val = obj[key];
-
-	      if ('class' == key) {
-	        if (val = joinClasses(val)) {
-	          buf.push(' ' + key + '="' + val + '"');
-	        }
-	      } else {
-	        buf.push(exports.attr(key, val, false, terse));
-	      }
-	    }
-	  }
-
-	  return buf.join('');
-	};
-
-	/**
-	 * Escape the given string of `html`.
-	 *
-	 * @param {String} html
-	 * @return {String}
-	 * @api private
-	 */
-
-	var jade_encode_html_rules = {
-	  '&': '&amp;',
-	  '<': '&lt;',
-	  '>': '&gt;',
-	  '"': '&quot;'
-	};
-	var jade_match_html = /[&<>"]/g;
-
-	function jade_encode_char(c) {
-	  return jade_encode_html_rules[c] || c;
-	}
-
-	exports.escape = jade_escape;
-	function jade_escape(html) {
-	  var result = String(html).replace(jade_match_html, jade_encode_char);
-	  if (result === '' + html) return html;else return result;
-	};
-
-	/**
-	 * Re-throw the given `err` in context to the
-	 * the jade in `filename` at the given `lineno`.
-	 *
-	 * @param {Error} err
-	 * @param {String} filename
-	 * @param {String} lineno
-	 * @api private
-	 */
-
-	exports.rethrow = function rethrow(err, filename, lineno, str) {
-	  if (!(err instanceof Error)) throw err;
-	  if ((typeof window != 'undefined' || !filename) && !str) {
-	    err.message += ' on line ' + lineno;
-	    throw err;
-	  }
-	  try {
-	    str = str || __webpack_require__(8).readFileSync(filename, 'utf8');
-	  } catch (ex) {
-	    rethrow(err, null, lineno);
-	  }
-	  var context = 3,
-	      lines = str.split('\n'),
-	      start = Math.max(lineno - context, 0),
-	      end = Math.min(lines.length, lineno + context);
-
-	  // Error context
-	  var context = lines.slice(start, end).map(function (line, i) {
-	    var curr = i + start + 1;
-	    return (curr == lineno ? '  > ' : '    ') + curr + '| ' + line;
-	  }).join('\n');
-
-	  // Alter exception message
-	  err.path = filename;
-	  err.message = (filename || 'Jade') + ':' + lineno + '\n' + context + '\n\n' + err.message;
-	  throw err;
-	};
-
-	exports.DebugItem = function DebugItem(lineno, filename) {
-	  this.lineno = lineno;
-	  this.filename = filename;
-	};
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
-
-	/* (ignored) */
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var jade = __webpack_require__(7);
-
-	module.exports = function template(locals) {
-	var buf = [];
-	var jade_mixins = {};
-	var jade_interp;
-	;var locals_for_with = (locals || {});(function (author, content, date, title) {
-	buf.push("<h1>" + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "</h1><div class=\"meta\"><div class=\"meta__author\">" + (jade.escape((jade_interp = author) == null ? '' : jade_interp)) + "</div><div class=\"meta__date\">" + (jade.escape((jade_interp = date) == null ? '' : jade_interp)) + "</div></div>" + (((jade_interp = content) == null ? '' : jade_interp)) + "");}.call(this,"author" in locals_for_with?locals_for_with.author:typeof author!=="undefined"?author:undefined,"content" in locals_for_with?locals_for_with.content:typeof content!=="undefined"?content:undefined,"date" in locals_for_with?locals_for_with.date:typeof date!=="undefined"?date:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
-	}
-
-/***/ },
-/* 10 */,
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = "<p>Developing my REST application (running on Express), I experienced a problem when trying to update nested object properties. Specifically, I was passing the <code>req.body</code> directly to the MongoDB <code>$set</code> operator. This did however lead to problems, as I accidently removed properties.</p>\n<pre><code class=\"lang-javascript\">// 1. The user object in MongoDB (before the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    street: &#39;High Street&#39;,\n    streetNumber: 109,\n    zipCode: &#39;2020-90&#39;\n  }\n}\n\n// 2. The request body (sent as a PUT request to the Express app)\nvar body = {\n  address: {\n    streetNumber: 200\n  }\n}\n\n// 3. Updating the user\ndb.collections(&#39;users&#39;).update({ $set: req.body })\n\n// 4. The user object in MongoDB (after the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    streetNumber: 200,\n  }\n}\n</code></pre>\n<p>The set operation of the <code>address</code> property removed all other properties nested under <code>address</code>. In order to specifically update a single property in MongoDB, one has to use the string dot-notation.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: { &#39;address.streetNumber&#39;: 200 } })\n</code></pre>\n<p>I therefore created a function to recursively loop through a nested JSON structure and construct a corresponding object in string dot-notation ready for a MongoDB update.</p>\n<pre><code class=\"lang-javascript\">function constructUpdateQuery(obj) {\n  var res = {};\n  (function iterate(obj, parent) {\n    for (var prop in obj) {\n      if (obj.hasOwnProperty(prop)) {\n        if (typeof obj[prop] === &#39;string&#39; \n          || typeof obj[prop] === &#39;number&#39; \n          || typeof obj[prop] === &#39;boolean&#39; \n          || Object.prototype.toString.call(obj[prop]) === &#39;[object Array]&#39; ) {\n          if (parent) res[parent + &#39;.&#39; + prop] = obj[prop];\n          else res[prop] = obj[prop];\n        } else {\n          if (parent) iterate(obj[prop], parent + &#39;.&#39; + prop);\n          else iterate(obj[prop], prop);\n        }\n      }\n    }\n  })(obj)\n  return res;\n}\n</code></pre>\n<p>It is now easy as cake to update a document by passing the <code>req.body</code>.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: constructUpdateQuery(req.body) })\n</code></pre>\n";
-
-/***/ },
-/* 12 */,
-/* 13 */,
-/* 14 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
@@ -1543,48 +1272,312 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */,
-/* 19 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	var jade = __webpack_require__(10);
 
-	// load the styles
-	var content = __webpack_require__(20);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(5)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../css-loader/index.js!./prism-okaidia.css", function() {
-				var newContent = require("!!./../../css-loader/index.js!./prism-okaidia.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (articles, undefined) {
+	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option>Pick an article</option>");
+	// iterate articles
+	;(function(){
+	  var $$obj = articles;
+	  if ('number' == typeof $$obj.length) {
+
+	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
+	      var article = $$obj[$index];
+
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	    }
+
+	  } else {
+	    var $$l = 0;
+	    for (var $index in $$obj) {
+	      $$l++;      var article = $$obj[$index];
+
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	    }
+
+	  }
+	}).call(this);
+
+	buf.push("</select></main>");}.call(this,"articles" in locals_for_with?locals_for_with.articles:typeof articles!=="undefined"?articles:undefined,"undefined" in locals_for_with?locals_for_with.undefined: false?undefined:undefined));;return buf.join("");
 	}
 
 /***/ },
-/* 20 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(3)();
-	// imports
+	'use strict';
 
+	/**
+	 * Merge two attribute objects giving precedence
+	 * to values in object `b`. Classes are special-cased
+	 * allowing for arrays and merging/joining appropriately
+	 * resulting in a string.
+	 *
+	 * @param {Object} a
+	 * @param {Object} b
+	 * @return {Object} a
+	 * @api private
+	 */
 
-	// module
-	exports.push([module.id, "/**\n * okaidia theme for JavaScript, CSS and HTML\n * Loosely based on Monokai textmate theme by http://www.monokai.nl/\n * @author ocodia\n */\n\ncode[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tcolor: #f8f8f2;\n\tbackground: none;\n\ttext-shadow: 0 1px rgba(0, 0, 0, 0.3);\n\tfont-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;\n\tdirection: ltr;\n\ttext-align: left;\n\twhite-space: pre;\n\tword-spacing: normal;\n\tword-break: normal;\n\tword-wrap: normal;\n\tline-height: 1.5;\n\n\t-moz-tab-size: 4;\n\t-o-tab-size: 4;\n\ttab-size: 4;\n\n\t-webkit-hyphens: none;\n\t-moz-hyphens: none;\n\t-ms-hyphens: none;\n\thyphens: none;\n}\n\n/* Code blocks */\npre[class*=\"language-\"] {\n\tpadding: 1em;\n\tmargin: .5em 0;\n\toverflow: auto;\n\tborder-radius: 0.3em;\n}\n\n:not(pre) > code[class*=\"language-\"],\npre[class*=\"language-\"] {\n\tbackground: #272822;\n}\n\n/* Inline code */\n:not(pre) > code[class*=\"language-\"] {\n\tpadding: .1em;\n\tborder-radius: .3em;\n\twhite-space: normal;\n}\n\n.token.comment,\n.token.prolog,\n.token.doctype,\n.token.cdata {\n\tcolor: slategray;\n}\n\n.token.punctuation {\n\tcolor: #f8f8f2;\n}\n\n.namespace {\n\topacity: .7;\n}\n\n.token.property,\n.token.tag,\n.token.constant,\n.token.symbol,\n.token.deleted {\n\tcolor: #f92672;\n}\n\n.token.boolean,\n.token.number {\n\tcolor: #ae81ff;\n}\n\n.token.selector,\n.token.attr-name,\n.token.string,\n.token.char,\n.token.builtin,\n.token.inserted {\n\tcolor: #a6e22e;\n}\n\n.token.operator,\n.token.entity,\n.token.url,\n.language-css .token.string,\n.style .token.string,\n.token.variable {\n\tcolor: #f8f8f2;\n}\n\n.token.atrule,\n.token.attr-value,\n.token.function {\n\tcolor: #e6db74;\n}\n\n.token.keyword {\n\tcolor: #66d9ef;\n}\n\n.token.regex,\n.token.important {\n\tcolor: #fd971f;\n}\n\n.token.important,\n.token.bold {\n\tfont-weight: bold;\n}\n.token.italic {\n\tfont-style: italic;\n}\n\n.token.entity {\n\tcursor: help;\n}\n", ""]);
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	// exports
+	exports.merge = function merge(a, b) {
+	  if (arguments.length === 1) {
+	    var attrs = a[0];
+	    for (var i = 1; i < a.length; i++) {
+	      attrs = merge(attrs, a[i]);
+	    }
+	    return attrs;
+	  }
+	  var ac = a['class'];
+	  var bc = b['class'];
 
+	  if (ac || bc) {
+	    ac = ac || [];
+	    bc = bc || [];
+	    if (!Array.isArray(ac)) ac = [ac];
+	    if (!Array.isArray(bc)) bc = [bc];
+	    a['class'] = ac.concat(bc).filter(nulls);
+	  }
+
+	  for (var key in b) {
+	    if (key != 'class') {
+	      a[key] = b[key];
+	    }
+	  }
+
+	  return a;
+	};
+
+	/**
+	 * Filter null `val`s.
+	 *
+	 * @param {*} val
+	 * @return {Boolean}
+	 * @api private
+	 */
+
+	function nulls(val) {
+	  return val != null && val !== '';
+	}
+
+	/**
+	 * join array as classes.
+	 *
+	 * @param {*} val
+	 * @return {String}
+	 */
+	exports.joinClasses = joinClasses;
+	function joinClasses(val) {
+	  return (Array.isArray(val) ? val.map(joinClasses) : val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object' ? Object.keys(val).filter(function (key) {
+	    return val[key];
+	  }) : [val]).filter(nulls).join(' ');
+	}
+
+	/**
+	 * Render the given classes.
+	 *
+	 * @param {Array} classes
+	 * @param {Array.<Boolean>} escaped
+	 * @return {String}
+	 */
+	exports.cls = function cls(classes, escaped) {
+	  var buf = [];
+	  for (var i = 0; i < classes.length; i++) {
+	    if (escaped && escaped[i]) {
+	      buf.push(exports.escape(joinClasses([classes[i]])));
+	    } else {
+	      buf.push(joinClasses(classes[i]));
+	    }
+	  }
+	  var text = joinClasses(buf);
+	  if (text.length) {
+	    return ' class="' + text + '"';
+	  } else {
+	    return '';
+	  }
+	};
+
+	exports.style = function (val) {
+	  if (val && (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
+	    return Object.keys(val).map(function (style) {
+	      return style + ':' + val[style];
+	    }).join(';');
+	  } else {
+	    return val;
+	  }
+	};
+	/**
+	 * Render the given attribute.
+	 *
+	 * @param {String} key
+	 * @param {String} val
+	 * @param {Boolean} escaped
+	 * @param {Boolean} terse
+	 * @return {String}
+	 */
+	exports.attr = function attr(key, val, escaped, terse) {
+	  if (key === 'style') {
+	    val = exports.style(val);
+	  }
+	  if ('boolean' == typeof val || null == val) {
+	    if (val) {
+	      return ' ' + (terse ? key : key + '="' + key + '"');
+	    } else {
+	      return '';
+	    }
+	  } else if (0 == key.indexOf('data') && 'string' != typeof val) {
+	    if (JSON.stringify(val).indexOf('&') !== -1) {
+	      console.warn('Since Jade 2.0.0, ampersands (`&`) in data attributes ' + 'will be escaped to `&amp;`');
+	    };
+	    if (val && typeof val.toISOString === 'function') {
+	      console.warn('Jade will eliminate the double quotes around dates in ' + 'ISO form after 2.0.0');
+	    }
+	    return ' ' + key + "='" + JSON.stringify(val).replace(/'/g, '&apos;') + "'";
+	  } else if (escaped) {
+	    if (val && typeof val.toISOString === 'function') {
+	      console.warn('Jade will stringify dates in ISO form after 2.0.0');
+	    }
+	    return ' ' + key + '="' + exports.escape(val) + '"';
+	  } else {
+	    if (val && typeof val.toISOString === 'function') {
+	      console.warn('Jade will stringify dates in ISO form after 2.0.0');
+	    }
+	    return ' ' + key + '="' + val + '"';
+	  }
+	};
+
+	/**
+	 * Render the given attributes object.
+	 *
+	 * @param {Object} obj
+	 * @param {Object} escaped
+	 * @return {String}
+	 */
+	exports.attrs = function attrs(obj, terse) {
+	  var buf = [];
+
+	  var keys = Object.keys(obj);
+
+	  if (keys.length) {
+	    for (var i = 0; i < keys.length; ++i) {
+	      var key = keys[i],
+	          val = obj[key];
+
+	      if ('class' == key) {
+	        if (val = joinClasses(val)) {
+	          buf.push(' ' + key + '="' + val + '"');
+	        }
+	      } else {
+	        buf.push(exports.attr(key, val, false, terse));
+	      }
+	    }
+	  }
+
+	  return buf.join('');
+	};
+
+	/**
+	 * Escape the given string of `html`.
+	 *
+	 * @param {String} html
+	 * @return {String}
+	 * @api private
+	 */
+
+	var jade_encode_html_rules = {
+	  '&': '&amp;',
+	  '<': '&lt;',
+	  '>': '&gt;',
+	  '"': '&quot;'
+	};
+	var jade_match_html = /[&<>"]/g;
+
+	function jade_encode_char(c) {
+	  return jade_encode_html_rules[c] || c;
+	}
+
+	exports.escape = jade_escape;
+	function jade_escape(html) {
+	  var result = String(html).replace(jade_match_html, jade_encode_char);
+	  if (result === '' + html) return html;else return result;
+	};
+
+	/**
+	 * Re-throw the given `err` in context to the
+	 * the jade in `filename` at the given `lineno`.
+	 *
+	 * @param {Error} err
+	 * @param {String} filename
+	 * @param {String} lineno
+	 * @api private
+	 */
+
+	exports.rethrow = function rethrow(err, filename, lineno, str) {
+	  if (!(err instanceof Error)) throw err;
+	  if ((typeof window != 'undefined' || !filename) && !str) {
+	    err.message += ' on line ' + lineno;
+	    throw err;
+	  }
+	  try {
+	    str = str || __webpack_require__(11).readFileSync(filename, 'utf8');
+	  } catch (ex) {
+	    rethrow(err, null, lineno);
+	  }
+	  var context = 3,
+	      lines = str.split('\n'),
+	      start = Math.max(lineno - context, 0),
+	      end = Math.min(lines.length, lineno + context);
+
+	  // Error context
+	  var context = lines.slice(start, end).map(function (line, i) {
+	    var curr = i + start + 1;
+	    return (curr == lineno ? '  > ' : '    ') + curr + '| ' + line;
+	  }).join('\n');
+
+	  // Alter exception message
+	  err.path = filename;
+	  err.message = (filename || 'Jade') + ':' + lineno + '\n' + context + '\n\n' + err.message;
+	  throw err;
+	};
+
+	exports.DebugItem = function DebugItem(lineno, filename) {
+	  this.lineno = lineno;
+	  this.filename = filename;
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	/* (ignored) */
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jade = __webpack_require__(10);
+
+	module.exports = function template(locals) {
+	var buf = [];
+	var jade_mixins = {};
+	var jade_interp;
+	;var locals_for_with = (locals || {});(function (author, content, date, title) {
+	buf.push("<h1>" + (jade.escape((jade_interp = title) == null ? '' : jade_interp)) + "</h1><div class=\"meta\"><div class=\"meta__author\">" + (jade.escape((jade_interp = author) == null ? '' : jade_interp)) + "</div><div class=\"meta__date\">" + (jade.escape((jade_interp = date) == null ? '' : jade_interp)) + "</div></div>" + (((jade_interp = content) == null ? '' : jade_interp)) + "");}.call(this,"author" in locals_for_with?locals_for_with.author:typeof author!=="undefined"?author:undefined,"content" in locals_for_with?locals_for_with.content:typeof content!=="undefined"?content:undefined,"date" in locals_for_with?locals_for_with.date:typeof date!=="undefined"?date:undefined,"title" in locals_for_with?locals_for_with.title:typeof title!=="undefined"?title:undefined));;return buf.join("");
+	}
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	module.exports = "<p>Developing my REST application (running on Express), I experienced a problem when trying to update nested object properties. Specifically, I was passing the <code>req.body</code> directly to the MongoDB <code>$set</code> operator. This did however lead to problems, as I accidently removed properties.</p>\n<pre><code class=\"lang-javascript\">// The user object in MongoDB (before the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    street: &#39;High Street&#39;,\n    streetNumber: 109,\n    zipCode: &#39;2020-90&#39;\n  }\n}\n\n// The request body (sent as a PUT request to the Express app)\nvar body = {\n  address: {\n    streetNumber: 200\n  }\n}\n\n// Updating the user\ndb.collections(&#39;users&#39;).update({ $set: req.body })\n\n// The user object in MongoDB (after the update)\nvar user = { \n  username: &#39;joe47&#39;,\n  age: 42,\n  address: {\n    streetNumber: 200,\n  }\n}\n</code></pre>\n<p>The set operation of the <code>address</code> property removed all other properties nested under <code>address</code>. In order to specifically update a single property in MongoDB, one has to use the string dot-notation.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: { &#39;address.streetNumber&#39;: 200 } })\n</code></pre>\n<p>I therefore created a function to recursively loop through a nested JSON structure and construct a corresponding object in string dot-notation ready for a MongoDB update.</p>\n<pre><code class=\"lang-javascript\">function convertObject(obj) {\n  var res = {};\n  (function iterate(obj, parent) {\n    for (var prop in obj) {\n      if (obj.hasOwnProperty(prop)) {\n        if (typeof obj[prop] === &#39;string&#39; \n          || typeof obj[prop] === &#39;number&#39; \n          || typeof obj[prop] === &#39;boolean&#39; \n          || Object.prototype.toString.call(obj[prop]) === &#39;[object Array]&#39; ) {\n          if (parent) res[parent + &#39;.&#39; + prop] = obj[prop];\n          else res[prop] = obj[prop];\n        } else {\n          if (parent) iterate(obj[prop], parent + &#39;.&#39; + prop);\n          else iterate(obj[prop], prop);\n        }\n      }\n    }\n  })(obj)\n  return res;\n}\n</code></pre>\n<p>Here is an example:</p>\n<pre><code class=\"lang-javascript\">// Body before converting\nvar body = {\n  address: {\n    streetNumber: 200\n  }\n}\n\nbody = convertObject(body); // =&gt; { &#39;address.streetNumber&#39;: 200 }\n</code></pre>\n<p>It is now easy as cake to update a document by passing the <code>req.body</code>.</p>\n<pre><code class=\"lang-javascript\">db.collections(&#39;users&#39;).update({ $set: convertObject(req.body) })\n</code></pre>\n";
 
 /***/ }
 /******/ ]);

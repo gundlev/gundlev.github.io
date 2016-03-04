@@ -1,7 +1,7 @@
 Developing my REST application (running on Express), I experienced a problem when trying to update nested object properties. Specifically, I was passing the `req.body` directly to the MongoDB `$set` operator. This did however lead to problems, as I accidently removed properties.
 
 ```javascript
-// 1. The user object in MongoDB (before the update)
+// The user object in MongoDB (before the update)
 var user = { 
   username: 'joe47',
   age: 42,
@@ -12,17 +12,17 @@ var user = {
   }
 }
 
-// 2. The request body (sent as a PUT request to the Express app)
+// The request body (sent as a PUT request to the Express app)
 var body = {
   address: {
     streetNumber: 200
   }
 }
 
-// 3. Updating the user
+// Updating the user
 db.collections('users').update({ $set: req.body })
 
-// 4. The user object in MongoDB (after the update)
+// The user object in MongoDB (after the update)
 var user = { 
   username: 'joe47',
   age: 42,
@@ -41,7 +41,7 @@ db.collections('users').update({ $set: { 'address.streetNumber': 200 } })
 I therefore created a function to recursively loop through a nested JSON structure and construct a corresponding object in string dot-notation ready for a MongoDB update.
 
 ```javascript
-function constructUpdateQuery(obj) {
+function convertObject(obj) {
   var res = {};
   (function iterate(obj, parent) {
     for (var prop in obj) {
@@ -63,8 +63,21 @@ function constructUpdateQuery(obj) {
 }
 ```
 
+Here is an example:
+
+```javascript
+// Body before converting
+var body = {
+  address: {
+    streetNumber: 200
+  }
+}
+
+body = convertObject(body); // => { 'address.streetNumber': 200 }
+```
+
 It is now easy as cake to update a document by passing the `req.body`.
 
 ```javascript
-db.collections('users').update({ $set: constructUpdateQuery(req.body) })
+db.collections('users').update({ $set: convertObject(req.body) })
 ```
