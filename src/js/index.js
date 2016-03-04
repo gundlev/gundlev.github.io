@@ -17,50 +17,70 @@ articles.push({
   content: require('../../articles/updating-nested-properties-dynamically-in-mongodb.md')
 });
 
+articles.map(a => {
+  a.path = slugify(a.title) + '.html';
+  return a;
+});
+
 // Render the template on the page
 document.querySelector('body').innerHTML = template({
   articles: articles
 });
 
-// Attach events to all article links
+// Render the right article when changing the select
 var articleSelect = getElements('.articles')[0];
 articleSelect.addEventListener('change', function() {
-  
+  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('path'));
+});
+
+// Render the right select when user goes backward/forward in browser history
+window.onpopstate = function(e) {
+  findAndRenderArticle(location.pathname.split('/').pop());
+};
+
+
+function findAndRenderArticle(path) {
   // Pick the chosen article
-  var article = articles.filter((a) => a.id === parseInt(this.value))[0];
+  var article = articles.filter((a) => a.path === path)[0];
   
   // Remove existing article if it exists
   var existingArticle = document.querySelector('.article');
   if (existingArticle) remove(existingArticle);
 
-  // Create new article
-  var articlePlaceholder = document.createElement('div');
-  articlePlaceholder.classList.add('article');
-  
-  // Set the article content and append to DOM
-  articlePlaceholder.innerHTML = articleTemplate({
-    author: 'Theodor C. Listov Lindekaer',
-    date: article.date,
-    title: article.title,
-    content: article.content
-  })
-  document.querySelector('body').appendChild(articlePlaceholder);
+  if (article) {
+    // Create new article
+    var articlePlaceholder = document.createElement('div');
+    articlePlaceholder.classList.add('article');
+    
+    // Set the article content and append to DOM
+    articlePlaceholder.innerHTML = articleTemplate({
+      author: 'Theodor C. Listov Lindekaer',
+      date: article.date,
+      title: article.title,
+      content: article.content
+    })
+    document.querySelector('body').appendChild(articlePlaceholder);
 
-  // Change URL accordingly
-  history.pushState(null, null, `${slugify(article.title)}.html`)
+    // Change URL accordingly
+    history.pushState(null, `${article.title} | Theodor Lindekaer`, article.path);
 
-  // Set code hightlighting
-  var codeNodes = getElements('code[class^="lang-"]');
-  for (let node of codeNodes) {
-    node.className = node.className.replace('lang', 'language');
-    node.parentNode.classList.add(node.className);
+    // TODO Set the select at the right option
+    
+
+    // Set code hightlighting
+    var codeNodes = getElements('code[class^="lang-"]');
+    for (let node of codeNodes) {
+      node.className = node.className.replace('lang', 'language');
+      node.parentNode.classList.add(node.className);
+    }
+    Prism.highlightAll();
+    
+    // Handle animation
+    setTimeout(() => articlePlaceholder.classList.add('active'), 10);  
+  } else {
+    history.pushState(null, 'Blog | Theodor Lindekaer', 'index.html');
   }
-  Prism.highlightAll();
-  
-  // Handle animation
-  setTimeout(() => articlePlaceholder.classList.add('active'), 10);
-  
-});
+}
 
 /*
 -----------------------------------------------------------------------------------

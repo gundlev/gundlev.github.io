@@ -65,76 +65,94 @@
 	  content: __webpack_require__(13)
 	});
 
+	articles.map(function (a) {
+	  a.path = slugify(a.title) + '.html';
+	  return a;
+	});
+
 	// Render the template on the page
 	document.querySelector('body').innerHTML = template({
 	  articles: articles
 	});
 
-	// Attach events to all article links
+	// Render the right article when changing the select
 	var articleSelect = getElements('.articles')[0];
 	articleSelect.addEventListener('change', function () {
-	  var _this = this;
+	  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('path'));
+	});
 
+	// Render the right select when user goes backward/forward in browser history
+	window.onpopstate = function (e) {
+	  findAndRenderArticle(location.pathname.split('/').pop());
+	};
+
+	function findAndRenderArticle(path) {
 	  // Pick the chosen article
 	  var article = articles.filter(function (a) {
-	    return a.id === parseInt(_this.value);
+	    return a.path === path;
 	  })[0];
 
 	  // Remove existing article if it exists
 	  var existingArticle = document.querySelector('.article');
 	  if (existingArticle) remove(existingArticle);
 
-	  // Create new article
-	  var articlePlaceholder = document.createElement('div');
-	  articlePlaceholder.classList.add('article');
+	  if (article) {
+	    // Create new article
+	    var articlePlaceholder = document.createElement('div');
+	    articlePlaceholder.classList.add('article');
 
-	  // Set the article content and append to DOM
-	  articlePlaceholder.innerHTML = articleTemplate({
-	    author: 'Theodor C. Listov Lindekaer',
-	    date: article.date,
-	    title: article.title,
-	    content: article.content
-	  });
-	  document.querySelector('body').appendChild(articlePlaceholder);
+	    // Set the article content and append to DOM
+	    articlePlaceholder.innerHTML = articleTemplate({
+	      author: 'Theodor C. Listov Lindekaer',
+	      date: article.date,
+	      title: article.title,
+	      content: article.content
+	    });
+	    document.querySelector('body').appendChild(articlePlaceholder);
 
-	  // Change URL accordingly
-	  history.pushState(null, null, slugify(article.title) + '.html');
+	    // Change URL accordingly
+	    history.pushState(null, article.title + ' | Theodor Lindekaer', article.path);
 
-	  // Set code hightlighting
-	  var codeNodes = getElements('code[class^="lang-"]');
-	  var _iteratorNormalCompletion = true;
-	  var _didIteratorError = false;
-	  var _iteratorError = undefined;
+	    // TODO Set the select at the right option
 
-	  try {
-	    for (var _iterator = codeNodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	      var node = _step.value;
+	    // Set code hightlighting
+	    var codeNodes = getElements('code[class^="lang-"]');
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
 
-	      node.className = node.className.replace('lang', 'language');
-	      node.parentNode.classList.add(node.className);
-	    }
-	  } catch (err) {
-	    _didIteratorError = true;
-	    _iteratorError = err;
-	  } finally {
 	    try {
-	      if (!_iteratorNormalCompletion && _iterator.return) {
-	        _iterator.return();
+	      for (var _iterator = codeNodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var node = _step.value;
+
+	        node.className = node.className.replace('lang', 'language');
+	        node.parentNode.classList.add(node.className);
 	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
 	    } finally {
-	      if (_didIteratorError) {
-	        throw _iteratorError;
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
+	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
 	      }
 	    }
+
+	    Prism.highlightAll();
+
+	    // Handle animation
+	    setTimeout(function () {
+	      return articlePlaceholder.classList.add('active');
+	    }, 10);
+	  } else {
+	    history.pushState(null, 'Blog | Theodor Lindekaer', 'index.html');
 	  }
-
-	  Prism.highlightAll();
-
-	  // Handle animation
-	  setTimeout(function () {
-	    return articlePlaceholder.classList.add('active');
-	  }, 10);
-	});
+	}
 
 	/*
 	-----------------------------------------------------------------------------------
@@ -1289,7 +1307,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (articles, undefined) {
-	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option>--> Stuff I've written <--</option>");
+	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option value=\"0\">--> Stuff I've written <--</option>");
 	// iterate articles
 	;(function(){
 	  var $$obj = articles;
@@ -1298,7 +1316,7 @@
 	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
 	      var article = $$obj[$index];
 
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("path", "" + (article.path) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
 	    }
 
 	  } else {
@@ -1306,7 +1324,7 @@
 	    for (var $index in $$obj) {
 	      $$l++;      var article = $$obj[$index];
 
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("path", "" + (article.path) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
 	    }
 
 	  }
