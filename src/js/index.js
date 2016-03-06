@@ -18,7 +18,7 @@ articles.push({
 });
 
 articles.map(a => {
-  a.path = slugify(a.title) + '.html';
+  a.hash = '#' + slugify(a.title);
   return a;
 });
 
@@ -30,18 +30,25 @@ document.querySelector('body').innerHTML = template({
 // Render the right article when changing the select
 var articleSelect = getElements('.articles')[0];
 articleSelect.addEventListener('change', function() {
-  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('path'));
+  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('hash'));
 });
 
 // Render the right select when user goes backward/forward in browser history
 window.onpopstate = function(e) {
   findAndRenderArticle(location.pathname.split('/').pop());
+  if (window.location.hash !== "") {
+    document.querySelector('.articles [hash="' + window.location.hash + '"]').selected = true;
+  } else {
+    document.querySelector('.articles [value="0"]').selected = true;
+  }
 };
 
+// Render the article matching the hash (on initial load)
+findAndRenderArticle(window.location.hash);
 
-function findAndRenderArticle(path) {
+function findAndRenderArticle(hash) {
   // Pick the chosen article
-  var article = articles.filter((a) => a.path === path)[0];
+  var article = articles.filter((a) => a.hash === hash)[0];
   
   // Remove existing article if it exists
   var existingArticle = document.querySelector('.article');
@@ -61,11 +68,8 @@ function findAndRenderArticle(path) {
     })
     document.querySelector('body').appendChild(articlePlaceholder);
 
-    // Change URL accordingly
-    history.pushState(null, `${article.title} | Theodor Lindekaer`, article.path);
-
-    // TODO Set the select at the right option
-    
+    // Change hash accordingly
+    history.pushState(null, null, article.hash);
 
     // Set code hightlighting
     var codeNodes = getElements('code[class^="lang-"]');
@@ -78,7 +82,7 @@ function findAndRenderArticle(path) {
     // Handle animation
     setTimeout(() => articlePlaceholder.classList.add('active'), 10);  
   } else {
-    history.pushState(null, 'Blog | Theodor Lindekaer', 'index.html');
+    history.pushState(null, null, '#');
   }
 }
 

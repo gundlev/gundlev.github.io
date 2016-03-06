@@ -66,7 +66,7 @@
 	});
 
 	articles.map(function (a) {
-	  a.path = slugify(a.title) + '.html';
+	  a.hash = '#' + slugify(a.title);
 	  return a;
 	});
 
@@ -78,18 +78,26 @@
 	// Render the right article when changing the select
 	var articleSelect = getElements('.articles')[0];
 	articleSelect.addEventListener('change', function () {
-	  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('path'));
+	  findAndRenderArticle(this.options[this.selectedIndex].getAttribute('hash'));
 	});
 
 	// Render the right select when user goes backward/forward in browser history
 	window.onpopstate = function (e) {
 	  findAndRenderArticle(location.pathname.split('/').pop());
+	  if (window.location.hash !== "") {
+	    document.querySelector('.articles [hash="' + window.location.hash + '"]').selected = true;
+	  } else {
+	    document.querySelector('.articles [value="0"]').selected = true;
+	  }
 	};
 
-	function findAndRenderArticle(path) {
+	// Render the article matching the hash (on initial load)
+	findAndRenderArticle(window.location.hash);
+
+	function findAndRenderArticle(hash) {
 	  // Pick the chosen article
 	  var article = articles.filter(function (a) {
-	    return a.path === path;
+	    return a.hash === hash;
 	  })[0];
 
 	  // Remove existing article if it exists
@@ -110,10 +118,8 @@
 	    });
 	    document.querySelector('body').appendChild(articlePlaceholder);
 
-	    // Change URL accordingly
-	    history.pushState(null, article.title + ' | Theodor Lindekaer', article.path);
-
-	    // TODO Set the select at the right option
+	    // Change hash accordingly
+	    history.pushState(null, null, article.hash);
 
 	    // Set code hightlighting
 	    var codeNodes = getElements('code[class^="lang-"]');
@@ -150,7 +156,7 @@
 	      return articlePlaceholder.classList.add('active');
 	    }, 10);
 	  } else {
-	    history.pushState(null, 'Blog | Theodor Lindekaer', 'index.html');
+	    history.pushState(null, null, '#');
 	  }
 	}
 
@@ -1307,7 +1313,7 @@
 	var jade_mixins = {};
 	var jade_interp;
 	;var locals_for_with = (locals || {});(function (articles, undefined) {
-	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a></p><select class=\"articles\"><option value=\"0\">--> Stuff I've written <--</option>");
+	buf.push("<main class=\"index\"><h1 class=\"headline\">Lindekaer</h1><p class=\"contact\"><a href=\"https://github.com/lindekaer\">Github</a> | <a href=\"mailto:theodor.lindekaer@gmail.com\">Mail</a> | <a href=\"https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b\">LinkedIn</a> | <a href=\"https://www.facebook.com/theodor.lindekaer\">Facebook</a> | <a href=\"https://twitter.com/lindekaer\">Twitter</a></p><select class=\"articles\"><option value=\"0\">--> Stuff I've written <--</option>");
 	// iterate articles
 	;(function(){
 	  var $$obj = articles;
@@ -1316,7 +1322,7 @@
 	    for (var $index = 0, $$l = $$obj.length; $index < $$l; $index++) {
 	      var article = $$obj[$index];
 
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("path", "" + (article.path) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("hash", "" + (article.hash) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
 	    }
 
 	  } else {
@@ -1324,7 +1330,7 @@
 	    for (var $index in $$obj) {
 	      $$l++;      var article = $$obj[$index];
 
-	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("path", "" + (article.path) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
+	buf.push("<option" + (jade.attr("value", "" + (article.id) + "", true, true)) + (jade.attr("hash", "" + (article.hash) + "", true, true)) + ">" + (jade.escape((jade_interp = article.title) == null ? '' : jade_interp)) + "</option>");
 	    }
 
 	  }

@@ -4,4 +4,4 @@ main.index
   select.articles
     option(value="0") --> Stuff I've written <--
     for article in articles
-      option(value="#{article.id}", path="#{article.path}") #{article.title}
+      option(value="#{article.id}", hash="#{article.hash}") #{article.title}
