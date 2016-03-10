@@ -83,7 +83,7 @@
 
 	// Render the right select when user goes backward/forward in browser history
 	window.onpopstate = function (e) {
-	  findAndRenderArticle(location.pathname.split('/').pop());
+	  findAndRenderArticle(window.location.hash);
 	  if (window.location.hash !== "") {
 	    document.querySelector('.articles [hash="' + window.location.hash + '"]').selected = true;
 	  } else {
@@ -95,6 +95,7 @@
 	findAndRenderArticle(window.location.hash);
 
 	function findAndRenderArticle(hash) {
+
 	  // Pick the chosen article
 	  var article = articles.filter(function (a) {
 	    return a.hash === hash;
