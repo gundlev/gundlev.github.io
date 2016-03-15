@@ -1,7 +1,7 @@
 main.index
   h1.headline Lindekaer
-  p.contact <a href="https://github.com/lindekaer">Github</a> | <a href="mailto:theodor.lindekaer@gmail.com">Mail</a> | <a href="https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b">LinkedIn</a> | <a href="https://www.facebook.com/theodor.lindekaer">Facebook</a> | <a href="https://twitter.com/lindekaer">Twitter</a>
+  p.contact <a href="https://github.com/lindekaer">Github</a> | <a href="mailto:theodor.lindekaer@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/theodor-c-listov-lindekaer-3289833b">LinkedIn</a> | <a href="https://www.facebook.com/theodor.lindekaer">Facebook</a> | <a href="https://twitter.com/lindekaer">Twitter</a>
   select.articles
-    option(value="0") --> Stuff I've written <--
+    option(value="0") Stuff I've written
     for article in articles
       option(value="#{article.id}", hash="#{article.hash}") #{article.title}

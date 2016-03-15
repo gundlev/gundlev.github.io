@@ -1,3 +1,5 @@
+require('./utils');
+
 // Require the SASS file, compile it to CSS and insert it on the page
 require('../sass/styles.scss');
 require('../../node_modules/prismjs/themes/prism-okaidia.css');
@@ -27,6 +29,9 @@ document.querySelector('body').innerHTML = template({
   articles: articles
 });
 
+// Render the article matching the hash (on initial load)
+findAndRenderArticle(window.location.hash);
+
 // Render the right article when changing the select
 var articleSelect = getElements('.articles')[0];
 articleSelect.addEventListener('change', function() {
@@ -43,11 +48,7 @@ window.onpopstate = function(e) {
   }
 };
 
-// Render the article matching the hash (on initial load)
-findAndRenderArticle(window.location.hash);
-
 function findAndRenderArticle(hash) {
-  
   // Pick the chosen article
   var article = articles.filter((a) => a.hash === hash)[0];
   
@@ -85,42 +86,4 @@ function findAndRenderArticle(hash) {
   } else {
     history.pushState(null, null, '#');
   }
-}
-
-/*
------------------------------------------------------------------------------------
-|
-| Utility functions
-|
------------------------------------------------------------------------------------
-*/
-
-function getElements(query) {
-  return Array.apply(null, document.querySelectorAll(query));
-}
-
-function remove(element) {
-   element.parentNode.removeChild(element); 
-}
-
-function create(element, text, cssClass) {
-  var node = document.createElement(element);
-  node.textContent = text;
-  if (cssClass) {
-    node.classList.add(cssClass);
-  }
-  return node;
-}
-
-function insertAfter(newNode, referenceNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
-
-function slugify(str) {
-  return str.toString().toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w\-]+/g, '')
-    .replace(/\-\-+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
 }

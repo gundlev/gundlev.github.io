@@ -31,7 +31,7 @@ module.exports = {
       },
       { 
         test: /\.md$/, 
-        loader: 'html-loader!markdown-loader' 
+        loader: 'html-loader!markdownattrs' 
       }
     ]
   }
