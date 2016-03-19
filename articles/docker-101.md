@@ -89,13 +89,19 @@ I have included a few useful Docker snippets:
 
 ```bash
 # List all Docker images
-$ docker images -a
+> docker images -a
 
 # List all Docker containers
-$ docker ps -a
+> docker ps -a
 
 # Stop and remove all Docker containers
-$ docker stop $(docker ps -a -q)
-$ docker rm $(docker ps -a -q)
+> docker stop $(docker ps -a -q)
+> docker rm $(docker ps -a -q)
+
+# Get command line access to a container
+> docker exec -it [CONTAINER_ID] /bin/bash
+
+# Get logs from container
+> docker logs [CONTAINER_ID]
 ```
 

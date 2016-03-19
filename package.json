@@ -4,7 +4,7 @@
   "description": "Personal website",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --watch --hot & open http://localhost:8080/"
   },
   "author": "Theodor C. Listov Lindekaer <theodor.lindekaer@gmail.com>",
   "license": "MIT",
