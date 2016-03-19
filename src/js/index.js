@@ -19,6 +19,13 @@ articles.push({
   content: require('../../articles/updating-nested-properties-dynamically-in-mongodb.md')
 });
 
+articles.push({
+  id: 2,
+  date: '2016-03-17',
+  title: 'Docker 101',
+  content: require('../../articles/docker-101.md')
+});
+
 articles.map(a => {
   a.hash = '#' + slugify(a.title);
   return a;

@@ -60,7 +60,7 @@ table {
 */
 
 html {
-  font-family: 'Helvetica';
+  font-family: 'Lato', sans-serif;
   font-size: 20px;
   @media (max-width: 720px) {
     font-size: 16px;
@@ -74,8 +74,12 @@ body {
   }
 }
 
+h1 {
+  font-weight: bold;
+}
+
 code {
-  font-size: 80%;
+  font-size: 90%;
 }
 
 /*
@@ -129,7 +133,7 @@ main.index {
 
 .article h2 { 
   font-size: 1.4em;
-  margin-top: 1.2em;
+  margin-top: 2em;
 }
 
 .article p {
