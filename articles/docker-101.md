@@ -2,7 +2,7 @@ There are plenty of resources on Docker out there, but not all tutorials are equ
 
 ## Step 1 - Server setup
 
-I spun up a virtual 64 bit Centos server on Digital Ocean with 512 MB memory and a 20 GB disk. I prepare the server running the commands:
+Spin up a virtual server. You can use [Virtualbox](https://www.virtualbox.org/), but I decided to spin up a virtual 64 bit Centos server on Digital Ocean with 512 MB memory and a 20 GB disk (this server will in Docker context be referred to as the *host machine*). Prepare the server with the following commands:
 
 ```bash
 # List kernel version - it MUST be 3.10 or above
@@ -45,7 +45,7 @@ You are now ready to start some containers. In order for our Nginx server to ser
 > echo "<html><h1>Hello from host machine!</h1></html>" > /var/www/index.html
 ```
 
-Read carefully through the code below before firing up the containers.
+Read carefully through the code below before firing up the containers. Additionally, run `docker run --help` for parameter explanations.
 
 ```bash
 # run    = starts the container process
@@ -70,7 +70,7 @@ Containers should be regarded as immutable as they don't change after initializa
 # Create directory on host machine to hold data
 > mkdir -p /var/data
 
-# Start the MySQL container
+# Start the MySQL container again (this time writing data to the host machine)
 > docker run -d -p 3306:3306 -v /var/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Xa8j3cs10 --name "mysql-server" mysql
 ```
 
