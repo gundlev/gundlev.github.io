@@ -52,6 +52,7 @@
 	__webpack_require__(2);
 	__webpack_require__(7);
 	__webpack_require__(9);
+	__webpack_require__(16);
 
 	// Store a reference to the Jade template function
 	var template = __webpack_require__(10);
@@ -1629,7 +1630,86 @@
 /* 15 */
 /***/ function(module, exports) {
 
-	module.exports = "<p>There are plenty of resources on Docker out there, but not all tutorials are equally clear. I have therefore decided to provide a walkthrough of setting up a Docker project from scratch.</p>\n<h2>Step 1 - Server setup</h2>\n<p>I spun up a virtual 64 bit Centos server on Digital Ocean with 512 MB memory and a 20 GB disk. I prepare the server running the commands:</p>\n<pre><code class=\"language-bash\"># List kernel version - it MUST be 3.10 or above\n&gt; uname -r\n\n# Update system packages\n&gt; sudo yum update\n\n# Add yum repository\n&gt; sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'\n[dockerrepo]\nname=Docker Repository\nbaseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/\nenabled=1\ngpgcheck=1\ngpgkey=https://yum.dockerproject.org/gpg\nEOF\n\n# Install Docker\n&gt; sudo yum install docker-engine\n</code></pre>\n<p>This should make it possible for you to run the <code>docker</code> command from the command line on your server. Try <code>docker --help</code> for a listing of commands.</p>\n<h2>Step 2 - Downloading images</h2>\n<p>We are now able to start our first container. I will show you how to start a a Nginx and a MySQL container. In order to get up and running quickly, we are going to use the official Dockerfiles for both Nginx and MySQL stored on <strong>Dockerhub</strong> (equivalent to Github, but for Dockerfiles). You can store your own Dockerfiles in the cloud by signing up at <a href=\"https://hub.docker.com/\">hub.docker.com</a>.</p>\n<p>Now we are ready to pull the Dockerfiles using <code>docker pull nginx</code> and <code>docker pull mysql</code>. To see the images that we have just downloaded, run <code>docker images</code>. Verify that you can see the image for both Nginx and MySQL.</p>\n<h2>Step 3 - Starting containers</h2>\n<p>You are now ready to start some containers. In order for our Nginx server to serve some HTML, we need to create a HTML file. On your host machine run the following commands:</p>\n<pre><code class=\"language-bash\"># Create a directory to store the HTML file\n&gt; mkdir -p /var/www\n\n# Create an index page\n&gt; echo &quot;&lt;html&gt;&lt;h1&gt;Hello from host machine!&lt;/h1&gt;&lt;/html&gt;&quot; &gt; /var/www/index.html\n</code></pre>\n<p>Read carefully through the code below before firing up the containers.</p>\n<pre><code class=\"language-bash\"># run    = starts the container process\n# -d     = detach the container and run in the background\n# -p     = map port from host machine to container\n# --name = name your container\n# -e     = set environment variable\n# -v     = mount a drive from the host machine to the container\n&gt; docker run -d -p 80:80 -v /var/www/:/usr/share/nginx/html --name &quot;nginx-server&quot; nginx\n&gt; docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Xa8j3cs10 --name &quot;mysql-server&quot; mysql\n</code></pre>\n<p>Containers should be regarded as immutable as they don't change after initialization. Furthermore, they can quickly be stopped, removed and started again. They are therefore not suitable for storing data. When working with MySQL, you want to make sure that the data written to the database is persisted. This can be achieved by mounting a directory from the host machine to the container.</p>\n<pre><code class=\"language-bash\"># Stop the MySQL container\n&gt; docker stop &quot;mysql-server&quot;\n\n# Remove the MySQL container\n&gt; docker rm &quot;mysql-server&quot;\n \n# Create directory on host machine to hold data\n&gt; mkdir -p /var/data\n\n# Start the MySQL container\n&gt; docker run -d -p 3306:3306 -v /var/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Xa8j3cs10 --name &quot;mysql-server&quot; mysql\n</code></pre>\n<p>Verify that the containers have started by running <code>docker ps</code>.</p>\n<h2>Step 4 - Testing containers</h2>\n<p>As described above, we have mapped the host machine's port 80 to port 80 on the Nginx container. Visit the IP address of the host machine and you should be welcomed by your own <code>index.html</code>! You have now successfully started a Nginx container and are able to control it through Docker commands.</p>\n<p>In order to test the MySQL container try to connect using <code>root</code> as username and your chosen password. You can connect on the command line or use a MySQL manager such as <a href=\"http://www.sequelpro.com/\">Sequel Pro</a>.</p>\n<h2>Wrapping it up</h2>\n<p>Docker makes it easy to deploy your applications. Using Docker you can focus on your application and use well-supported images for your web server and databases. Additionally Docker takes the anxiety out of deploying to production - because of the isolation of containers you know that what works in development also works in production.</p>\n<p>I have included a few useful Docker snippets:</p>\n<pre><code class=\"language-bash\"># List all Docker images\n$ docker images -a\n\n# List all Docker containers\n$ docker ps -a\n\n# Stop and remove all Docker containers\n$ docker stop $(docker ps -a -q)\n$ docker rm $(docker ps -a -q)\n</code></pre>\n";
+	module.exports = "<p>There are plenty of resources on Docker out there, but not all tutorials are equally clear. I have therefore decided to provide a walkthrough of setting up a Docker project from scratch.</p>\n<h2>Step 1 - Server setup</h2>\n<p>I spun up a virtual 64 bit Centos server on Digital Ocean with 512 MB memory and a 20 GB disk. I prepare the server running the commands:</p>\n<pre><code class=\"language-bash\"># List kernel version - it MUST be 3.10 or above\n&gt; uname -r\n\n# Update system packages\n&gt; sudo yum update\n\n# Add yum repository\n&gt; sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'\n[dockerrepo]\nname=Docker Repository\nbaseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/\nenabled=1\ngpgcheck=1\ngpgkey=https://yum.dockerproject.org/gpg\nEOF\n\n# Install Docker\n&gt; sudo yum install docker-engine\n</code></pre>\n<p>This should make it possible for you to run the <code>docker</code> command from the command line on your server. Try <code>docker --help</code> for a listing of commands.</p>\n<h2>Step 2 - Downloading images</h2>\n<p>We are now able to start our first container. I will show you how to start a a Nginx and a MySQL container. In order to get up and running quickly, we are going to use the official Dockerfiles for both Nginx and MySQL stored on <strong>Dockerhub</strong> (equivalent to Github, but for Dockerfiles). You can store your own Dockerfiles in the cloud by signing up at <a href=\"https://hub.docker.com/\">hub.docker.com</a>.</p>\n<p>Now we are ready to pull the Dockerfiles using <code>docker pull nginx</code> and <code>docker pull mysql</code>. To see the images that we have just downloaded, run <code>docker images</code>. Verify that you can see the image for both Nginx and MySQL.</p>\n<h2>Step 3 - Starting containers</h2>\n<p>You are now ready to start some containers. In order for our Nginx server to serve some HTML, we need to create a HTML file. On your host machine run the following commands:</p>\n<pre><code class=\"language-bash\"># Create a directory to store the HTML file\n&gt; mkdir -p /var/www\n\n# Create an index page\n&gt; echo &quot;&lt;html&gt;&lt;h1&gt;Hello from host machine!&lt;/h1&gt;&lt;/html&gt;&quot; &gt; /var/www/index.html\n</code></pre>\n<p>Read carefully through the code below before firing up the containers.</p>\n<pre><code class=\"language-bash\"># run    = starts the container process\n# -d     = detach the container and run in the background\n# -p     = map port from host machine to container\n# --name = name your container\n# -e     = set environment variable\n# -v     = mount a drive from the host machine to the container\n&gt; docker run -d -p 80:80 -v /var/www/:/usr/share/nginx/html --name &quot;nginx-server&quot; nginx\n&gt; docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Xa8j3cs10 --name &quot;mysql-server&quot; mysql\n</code></pre>\n<p>Containers should be regarded as immutable as they don't change after initialization. Furthermore, they can quickly be stopped, removed and started again. They are therefore not suitable for storing data. When working with MySQL, you want to make sure that the data written to the database is persisted. This can be achieved by mounting a directory from the host machine to the container.</p>\n<pre><code class=\"language-bash\"># Stop the MySQL container\n&gt; docker stop &quot;mysql-server&quot;\n\n# Remove the MySQL container\n&gt; docker rm &quot;mysql-server&quot;\n \n# Create directory on host machine to hold data\n&gt; mkdir -p /var/data\n\n# Start the MySQL container\n&gt; docker run -d -p 3306:3306 -v /var/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=Xa8j3cs10 --name &quot;mysql-server&quot; mysql\n</code></pre>\n<p>Verify that the containers have started by running <code>docker ps</code>.</p>\n<h2>Step 4 - Testing containers</h2>\n<p>As described above, we have mapped the host machine's port 80 to port 80 on the Nginx container. Visit the IP address of the host machine and you should be welcomed by your own <code>index.html</code>! You have now successfully started a Nginx container and are able to control it through Docker commands.</p>\n<p>In order to test the MySQL container try to connect using <code>root</code> as username and your chosen password. You can connect on the command line or use a MySQL manager such as <a href=\"http://www.sequelpro.com/\">Sequel Pro</a>.</p>\n<h2>Wrapping it up</h2>\n<p>Docker makes it easy to deploy your applications. Using Docker you can focus on your application and use well-supported images for your web server and databases. Additionally Docker takes the anxiety out of deploying to production - because of the isolation of containers you know that what works in development also works in production.</p>\n<p>I have included a few useful Docker snippets:</p>\n<pre><code class=\"language-bash\"># List all Docker images\n&gt; docker images -a\n\n# List all Docker containers\n&gt; docker ps -a\n\n# Stop and remove all Docker containers\n&gt; docker stop $(docker ps -a -q)\n&gt; docker rm $(docker ps -a -q)\n\n# Get command line access to a container\n&gt; docker exec -it [CONTAINER_ID] /bin/bash\n\n# Get logs from container\n&gt; docker logs [CONTAINER_ID]\n\n# Remove all exited containers\n&gt; docker rm -v $(docker ps -a -q -f status=exited)\n</code></pre>\n";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function (Prism) {
+		var insideString = {
+			variable: [
+			// Arithmetic Environment
+			{
+				pattern: /\$?\(\([\w\W]+?\)\)/,
+				inside: {
+					// If there is a $ sign at the beginning highlight $(( and )) as variable
+					variable: [{
+						pattern: /(^\$\(\([\w\W]+)\)\)/,
+						lookbehind: true
+					}, /^\$\(\(/],
+					number: /\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,
+					// Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
+					operator: /--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,
+					// If there is no $ sign at the beginning highlight (( and )) as punctuation
+					punctuation: /\(\(?|\)\)?|,|;/
+				}
+			},
+			// Command Substitution
+			{
+				pattern: /\$\([^)]+\)|`[^`]+`/,
+				inside: {
+					variable: /^\$\(|^`|\)$|`$/
+				}
+			}, /\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]
+		};
+
+		Prism.languages.bash = {
+			'shebang': {
+				pattern: /^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,
+				alias: 'important'
+			},
+			'comment': {
+				pattern: /(^|[^"{\\])#.*/,
+				lookbehind: true
+			},
+			'string': [
+			//Support for Here-Documents https://en.wikipedia.org/wiki/Here_document
+			{
+				pattern: /((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,
+				lookbehind: true,
+				inside: insideString
+			}, {
+				pattern: /("|')(?:\\?[\s\S])*?\1/g,
+				inside: insideString
+			}],
+			'variable': insideString.variable,
+			// Originally based on http://ss64.com/bash/
+			'function': {
+				pattern: /(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,
+				lookbehind: true
+			},
+			'keyword': {
+				pattern: /(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,
+				lookbehind: true
+			},
+			'boolean': {
+				pattern: /(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,
+				lookbehind: true
+			},
+			'operator': /&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,
+			'punctuation': /\$?\(\(?|\)\)?|\.\.|[{}[\];]/
+		};
+
+		var inside = insideString.variable[1].inside;
+		inside['function'] = Prism.languages.bash['function'];
+		inside.keyword = Prism.languages.bash.keyword;
+		inside.boolean = Prism.languages.bash.boolean;
+		inside.operator = Prism.languages.bash.operator;
+		inside.punctuation = Prism.languages.bash.punctuation;
+	})(Prism);
 
 /***/ }
 /******/ ]);

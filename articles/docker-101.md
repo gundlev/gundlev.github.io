@@ -4,7 +4,7 @@ There are plenty of resources on Docker out there, but not all tutorials are equ
 
 I spun up a virtual 64 bit Centos server on Digital Ocean with 512 MB memory and a 20 GB disk. I prepare the server running the commands:
 
-```bash 
+```bash
 # List kernel version - it MUST be 3.10 or above
 > uname -r
 
@@ -103,5 +103,8 @@ I have included a few useful Docker snippets:
 
 # Get logs from container
 > docker logs [CONTAINER_ID]
+
+# Remove all exited containers
+> docker rm -v $(docker ps -a -q -f status=exited)
 ```
 

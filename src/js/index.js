@@ -4,6 +4,7 @@ require('./utils');
 require('../sass/styles.scss');
 require('../../node_modules/prismjs/themes/prism-okaidia.css');
 require('../../node_modules/prismjs/prism.js');
+require('../../node_modules/prismjs/components/prism-bash.js');
 
 // Store a reference to the Jade template function
 var template = require('../jade/index.jade');

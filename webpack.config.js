@@ -1,10 +1,12 @@
+var LiveReloadPlugin = require('webpack-livereload-plugin');
+
 module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'bundle.js',
     path: './dist'
   },
-   module: {
+  module: {
     loaders: [
       {
         test: /\.js$/,
@@ -34,5 +36,8 @@ module.exports = {
         loader: 'html-loader!markdownattrs' 
       }
     ]
-  }
+  },
+  plugins: [
+    new LiveReloadPlugin({})
+  ]
 };
