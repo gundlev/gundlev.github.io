@@ -13,19 +13,13 @@ var template = require('../jade/index.jade');
 var articleTemplate = require('../jade/_article-template.jade');
 var articles = [];
 
-articles.push({
-  id: 1,
-  date: '2016-03-03',
-  title: 'Updating nested properties dynamically in MongoDB',
-  content: require('../../articles/updating-nested-properties-dynamically-in-mongodb.md')
-});
+// articles.push({
+//   id: 1,
+//   date: '2016-03-03',
+//   title: 'Updating nested properties dynamically in MongoDB',
+//   content: require('../../articles/updating-nested-properties-dynamically-in-mongodb.md')
+// });
 
-articles.push({
-  id: 2,
-  date: '2016-03-17',
-  title: 'Docker 101',
-  content: require('../../articles/docker-101.md')
-});
 
 articles.map(a => {
   a.hash = '#' + slugify(a.title);
