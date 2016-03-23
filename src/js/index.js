@@ -59,7 +59,7 @@ window.onpopstate = function(e) {
 function findAndRenderArticle(hash) {
   // Pick the chosen article
   var article = articles.filter((a) => a.hash === hash)[0];
-  
+
   // Remove existing article if it exists
   var existingArticle = document.querySelector('.article');
   if (existingArticle) remove(existingArticle);
@@ -68,10 +68,10 @@ function findAndRenderArticle(hash) {
     // Create new article
     var articlePlaceholder = document.createElement('div');
     articlePlaceholder.classList.add('article');
-    
+
     // Set the article content and append to DOM
     articlePlaceholder.innerHTML = articleTemplate({
-      author: 'Theodor C. Listov Lindekaer',
+      author: 'Niklas Stokkebro Gundlev',
       date: article.date,
       title: article.title,
       content: article.content
@@ -88,9 +88,9 @@ function findAndRenderArticle(hash) {
       node.parentNode.classList.add(node.className);
     }
     Prism.highlightAll();
-    
+
     // Handle animation
-    setTimeout(() => articlePlaceholder.classList.add('active'), 10);  
+    setTimeout(() => articlePlaceholder.classList.add('active'), 10);
   } else {
     history.pushState(null, null, '#');
   }
